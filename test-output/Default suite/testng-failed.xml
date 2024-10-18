@@ -5,8 +5,9 @@
     <classes>
       <class name="fcaa.testCase.fcaworkflows">
         <methods>
-          <include name="home_page"/>
+          <include name="testOldest"/>
           <include name="LaunchApplication"/>
+          <include name="setUpLatestNews"/>
         </methods>
       </class> <!-- fcaa.testCase.fcaworkflows -->
     </classes>

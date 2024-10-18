@@ -13,7 +13,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 
 import fcaa.pageObject.HomePage;
 
@@ -23,7 +26,7 @@ public class BaseClass {
 	public WebDriver driver;
 	public HomePage HomePage;
 	
-	public void initializeDriver() throws IOException {
+	public WebDriver initializeDriver() throws IOException {
 		 properties = new Properties();
 		FileInputStream fileInputStream = new FileInputStream("./src/main/java/fcaa/resources/config.properties");
 		properties.load(fileInputStream);
@@ -39,20 +42,20 @@ public class BaseClass {
 		driver.manage().window().maximize();
 	//Implicit wait
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-		
+		return driver;
 	}
 	
 	@BeforeMethod
 	public void LaunchApplication() throws IOException {
-		initializeDriver();
+		driver = initializeDriver();
 		HomePage =new HomePage(driver);
 		HomePage.goTo("https://fcahandbook.sentientgeeks.us/");
 	}
 	
-//	@AfterMethod
-//	public void TearDown() {
-//		driver.close();
-//	}
+	@AfterMethod
+	public void TearDown() {
+		driver.close();
+	}
 	
 	//Screenshot
 		public String getScreenshot(String testCaseName, WebDriver driver) throws IOException {
