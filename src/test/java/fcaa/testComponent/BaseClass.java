@@ -1,10 +1,14 @@
 package fcaa.testComponent;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.Properties;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -49,5 +53,14 @@ public class BaseClass {
 //	public void TearDown() {
 //		driver.close();
 //	}
+	
+	//Screenshot
+		public String getScreenshot(String testCaseName, WebDriver driver) throws IOException {
+			TakesScreenshot ts = (TakesScreenshot) driver;
+			File source = ts.getScreenshotAs(OutputType.FILE);
+			File dest = new File(System.getProperty("user.dir") + "//Reports//" + testCaseName + ".png");
+			FileUtils.copyFile(source, dest);
+			return System.getProperty("user.dir") + "//Reports//" + testCaseName + ".png";
+		}
 	
 }

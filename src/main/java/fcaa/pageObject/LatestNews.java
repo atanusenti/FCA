@@ -1,6 +1,10 @@
 package fcaa.pageObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -69,6 +73,9 @@ public class LatestNews extends MenuBar {
     // Select Month Radio button
     @FindBy(xpath="//label[text()='This Month']")
     WebElement selectMonthRadio;
+    
+    @FindBy(xpath = "//*[@formcontrolname=\"monthFilter\"]//div[contains(@class, 'p-radiobutton p-component')]")
+    WebElement monthRadioBtn;
     
     //Click on the submit button
     @FindBy(xpath="(//button[@class='solid_btn flex-1'][normalize-space()='Submit'])[1]")
@@ -144,14 +151,51 @@ public class LatestNews extends MenuBar {
 	selectSubmit.click();
 }
     
-    //Enter date range
-	public void putDateRange() {
-	putDateRange.sendKeys("20/12/2020 - 24/12/2020");
-    
-}
-	//Displaying text
-	public void displayText() {
+	
+	
+    public boolean verifyDataWithinDateRange(String startDateStr,String endDateStr) throws ParseException {
+        // Define date range
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date startDate = sdf.parse(startDateStr);
+        Date endDate = sdf.parse(endDateStr);
+
+        // Input the date range
+        String dateRangeStr = startDateStr + " - " + endDateStr;
+		putDateRange.sendKeys(dateRangeStr);
+		
 		displayText.click();
+
+		// Click on the submit button
+		selectSubmit.click();
+		
+		List<String> dateList = getDateList();
+		
+		boolean allDatesInRange = true;
+        for (String date : dateList) {
+//            String dateText = row.findElement(By.cssSelector(".dateColumn")).getText(); // Adjust selector as needed
+            Date dataDate = sdf.parse(date);
+
+            // Assert that dataDate is within the range
+            if (dataDate.before(startDate) || dataDate.after(endDate)) {
+                allDatesInRange = false; // Set flag to false if any date is out of range
+                break; // Exit the loop early if we find a date out of range
+            }
+        }
+        return allDatesInRange;
+    }
+    
+    
+    public boolean verifyRadioButtonUnselected(String startDateStr,String endDateStr) throws ParseException {
+
+        // Input the date range
+        String dateRangeStr = startDateStr + " - " + endDateStr;
+		putDateRange.sendKeys(dateRangeStr);
+		
+		displayText.click();
+
+        // Locate the radio button
+		return monthRadioBtn.getAttribute("class").contains("p-radiobutton-checked");
+    
 	}
 	
 }
