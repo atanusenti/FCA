@@ -43,8 +43,8 @@ public class latestNews extends BaseClass {
 		List<String> dateAfterSort = latestNews.getDateList();
 		latestNews.decendingDates(dateAfterSort);
 		Assert.assertEquals(dateAfterSort, dateBeforeSort);
-//		System.out.println(dateBeforeSort);
-//		System.out.println(dateafterSort);
+		System.out.println(dateBeforeSort);
+		System.out.println(dateAfterSort);
 	}
 
 	// Verify Newest functionality
@@ -71,8 +71,8 @@ public class latestNews extends BaseClass {
 		List<String> titleAfterSort = latestNews.getTitleList();
 		latestNews.ascendingTitle(titleAfterSort);
 		Assert.assertEquals(titleBeforeSort, titleAfterSort);
-//		System.out.println(titleBeforeSort);
-//		System.out.println(titleAfterSort);
+		System.out.println(titleBeforeSort);
+		System.out.println(titleAfterSort);
 	}
 
 	// Verify Title Ascending
@@ -86,8 +86,8 @@ public class latestNews extends BaseClass {
 		List<String> titleAfterSort = latestNews.getTitleList();
 		latestNews.descendingTitle(titleAfterSort);
 		Assert.assertEquals(titleBeforeSort, titleAfterSort);
-//	System.out.println(titleBeforeSort);
-//	System.out.println(titleAfterSort);
+//	    System.out.println(titleBeforeSort);
+//	    System.out.println(titleAfterSort);
 	}
 
 	// Verify radio button
@@ -128,7 +128,7 @@ public class latestNews extends BaseClass {
 
 	// Assert that the counted total matches the displayed total
 	@Test(priority = 12)
-	public void verifyTotalCount() {
+	public void verifyTotalCount() throws InterruptedException {
 		int[] count = latestNews.verifyDataCount();
 		int totalCount = count[0];
 		int displayedCount = count[1];
@@ -161,7 +161,7 @@ public class latestNews extends BaseClass {
 
 	//Test First Page Button
 	@Test(priority = 16)
-	private void verifyFirstPageNumber() {
+	private void verifyFirstPageNumber() throws InterruptedException {
 		int[] paginationPageNum = latestNews.checkFirstPageBtn();
 		String expectedPageNumber = "1";
 		if (paginationPageNum.length > 0) {
@@ -172,7 +172,7 @@ public class latestNews extends BaseClass {
 
 	//Test Previous Page Button
 	@Test(priority = 17)
-	private void verifyPreviousPageNumber() {
+	private void verifyPreviousPageNumber() throws InterruptedException {
 		int[] paginationPageNum = latestNews.checkPreviousPageBtn();
 		String expectedPageNumber = "1";
 		if (paginationPageNum.length > 0) {
@@ -183,7 +183,7 @@ public class latestNews extends BaseClass {
 
 	//Test Next Page Button
 	@Test(priority = 18)
-	private void verifyNextPageNumber() {
+	private void verifyNextPageNumber() throws InterruptedException {
 		int[] paginationPageNum = latestNews.checkNextPageBtn();
 		String expectedPageNumber = "2";
 		if (paginationPageNum.length > 0) {
@@ -194,7 +194,7 @@ public class latestNews extends BaseClass {
 
 	//Test Last Page Button
 	@Test(priority = 19)
-	private void verifyLastPageNumber() {
+	private void verifyLastPageNumber() throws InterruptedException {
 		int[] paginationPageNum = latestNews.checkLastPageBtn();
 		if (paginationPageNum.length > 0) {
 			int expectedPageNumber = paginationPageNum[0];

@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import fcaa.pageObject.Forms;
 import fcaa.pageObject.LatestNews;
 
 public class MenuBar extends Utility{
@@ -85,9 +86,11 @@ public void goToInstruments() {
 	instruments.click();
 }
 
-public void goToForms() {
+public Forms goToForms() {
 	
 	forms.click();
+	Forms forms = new Forms(driver);
+	return forms;
 }
 
 public void goToTechnicalStandards() {

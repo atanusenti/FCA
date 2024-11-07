@@ -30,42 +30,13 @@ public class LatestNews extends MenuBar {
 	@FindBy(xpath = "//input[@placeholder='Search Latest News']")
 	WebElement searchLatestNewsText;
 
-	// Sort(Compare New & Old)
-	// before filter capture the published date
+	// capture the published date
 	@FindBy(xpath = "//ul/li[@class='px-0 text-sm ng-star-inserted']")
-	List<WebElement> beforefilterdate;
+	List<WebElement> publishedDate;
 
-	// Click on the Sort button
-	@FindBy(xpath = "(//div[@aria-label='dropdown trigger'])[1]")
-	WebElement clickOnSort;
-
-	// Select Oldest from the sorting List
-	@FindBy(xpath = "(//span[normalize-space()='Oldest'])[1]")
-	WebElement selectOldest;
-
-	// After filter capture the date
-	@FindBy(xpath = "//ul/li[@class='px-0 text-sm ng-star-inserted']")
-	List<WebElement> afterfilterdate;
-
-	// Select Newest from the sorting List
-	@FindBy(xpath = "(//span[normalize-space()='Newest'])[1]")
-	WebElement selectNewest;
-
-	// Capture Title before sorting
+	// Capture Title
 	@FindBy(xpath = "//a[@class='link_color sm:text-lg text-base font-semibold cursor-pointer']")
-	List<WebElement> beforefiltertitle;
-
-	// Select Title Ascending from the sorting List
-	@FindBy(xpath = "(//span[normalize-space()='Title Ascending'])[1]")
-	WebElement selectascending;
-
-	// Select Title Descending from the sorting List
-	@FindBy(xpath = "(//span[normalize-space()='Title Descending'])[1]")
-	WebElement selectdescending;
-
-	// After filter capture the Title
-	@FindBy(xpath = "//a[@class='link_color sm:text-lg text-base font-semibold cursor-pointer']")
-	List<WebElement> afterfiltertitle;
+	List<WebElement> contentTitle;
 
 	// Select Month Radio button
 	@FindBy(xpath = "//label[text()='This Month']")
@@ -116,42 +87,16 @@ public class LatestNews extends MenuBar {
 		return searchLatestNewsText.getAttribute("placeholder");
 	}
 
-	// Get Date List //before filter capture the published date
-	public List<String> getDateList() {
-		List<String> getDateList = getDate(beforefilterdate);
+	// Get Date List //Get published date List
+	public List<String> getDateList() throws InterruptedException {
+		List<String> getDateList = getDate(publishedDate);
 		return getDateList;
 	}
 
-	// Click on the Sort button
-	public void clickOnSort() {
-		waitForElementToAppear(toastMessage);
-		clickOnSort.click();
-	}
-
-	// Select Oldest from the sorting List
-	public void selectOldest() {
-		selectOldest.click();
-	}
-
-	// Select Newest from the sorting List
-	public void selectNewest() {
-		selectNewest.click();
-	}
-
 	// Get Title List //Capture Title before sorting
-	public List<String> getTitleList() {
-		List<String> getTitle = getTitle(beforefiltertitle);
-		return getTitle;
-	}
-
-	// Select Title Ascending from the sorting List
-	public void selectascending() {
-		selectascending.click();
-	}
-
-	// Select Title descending from the sorting List
-	public void selectdescending() {
-		selectdescending.click();
+	public List<String> getTitleList() throws InterruptedException {
+		List<String> titleList = titleList(contentTitle);
+		return titleList;
 	}
 
 	// Select Month Radio button
@@ -164,7 +109,7 @@ public class LatestNews extends MenuBar {
 		selectSubmit.click();
 	}
 
-	public boolean verifyDataWithinDateRange(String startDateStr, String endDateStr) throws ParseException {
+	public boolean verifyDataWithinDateRange(String startDateStr, String endDateStr) throws ParseException, InterruptedException {
 		// Define date range
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date startDate = sdf.parse(startDateStr);
@@ -221,7 +166,7 @@ public class LatestNews extends MenuBar {
 
 	}
 
-	public int[] verifyDataCount() {
+	public int[] verifyDataCount() throws InterruptedException {
 		int[] count = verifyDataCountAcrossPages();
 		return count;
 	}
@@ -318,25 +263,25 @@ public class LatestNews extends MenuBar {
 
 	// Test Pagination functionality
 
-	public int[] checkFirstPageBtn() {
+	public int[] checkFirstPageBtn() throws InterruptedException {
 
 		int[] paginationPageNum = clickFirstPageButton();
 		return paginationPageNum;
 	}
 
-	public int[] checkPreviousPageBtn() {
+	public int[] checkPreviousPageBtn() throws InterruptedException {
 
 		int[] paginationPageNum = clickPreviousPageButton();
 		return paginationPageNum;
 	}
 
-	public int[] checkNextPageBtn() {
+	public int[] checkNextPageBtn() throws InterruptedException {
 
 		int[] paginationPageNum = clickNextPageButton();
 		return paginationPageNum;
 	}
 
-	public int[] checkLastPageBtn() {
+	public int[] checkLastPageBtn() throws InterruptedException {
 		return clickLastPageButton();
 	}
 

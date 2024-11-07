@@ -4,6 +4,7 @@
 	<test thread-count="5" name="Test">
 		<classes>
 			<class name="fcaa.testCase.latestNews" />
+			<class name="fcaa.testCase.forms" />
 		</classes>
 	</test> <!--
 	Test -->

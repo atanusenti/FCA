@@ -3,14 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="fcaa.testCase.latestNews">
+      <class name="fcaa.testCase.forms">
         <methods>
-          <include name="setUpLatestNews"/>
           <include name="tearDown"/>
-          <include name="verifyLastPageNumber"/>
+          <include name="verifyDataWithinDateRange"/>
           <include name="LaunchApplication"/>
+          <include name="setUpForms"/>
         </methods>
-      </class> <!-- fcaa.testCase.latestNews -->
+      </class> <!-- fcaa.testCase.forms -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
