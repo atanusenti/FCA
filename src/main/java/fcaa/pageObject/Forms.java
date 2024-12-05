@@ -22,20 +22,20 @@ public class Forms extends MenuBar {
 		PageFactory.initElements(driver, this);
 	}
 
+	// -----------------Search Legal Instruments-------------------//
+
 	@FindBy(xpath = "//input[@placeholder='Search Forms']")
 	WebElement searchForms;
-
-	// capture the effective date
-	@FindBy(xpath = "//div//ul//li[@class='px-0 md:px-3 text-sm ng-star-inserted'][3]")
-	List<WebElement> effectiveDate;
-
-	// Capture Title
-	@FindBy(xpath = "//a[@class='link_color form_title inline sm:text-lg text-base font-semibold cursor-pointer']")
-	List<WebElement> contentTitle;
 
 	public void searchForms() {
 		searchForms.click();
 	}
+
+	// ----------------Published Date List To Verify Sorting ---------------//
+	
+	// capture the effective date
+	@FindBy(xpath = "//div[contains(@class, 'listing')]//li[b[normalize-space()='Effective Date:']]")
+	List<WebElement> effectiveDate;
 
 	// Get Date List //Get published date List
 	public List<String> getDateList() throws InterruptedException {
@@ -43,69 +43,29 @@ public class Forms extends MenuBar {
 		return getDateList;
 	}
 
+	// -------------------Title List to Verify Sorting--------------//
+
+	// Capture Title
+	@FindBy(xpath = "//a[@class='link_color form_title inline sm:text-lg text-base font-semibold cursor-pointer']")
+	List<WebElement> contentTitle;
+
 	// Get Title List
 	public List<String> getTitleList() throws InterruptedException {
-		List<String> titleList = titleList(contentTitle);
-		return titleList;
+		return titleList(contentTitle);
 	}
 
-	// Select Month Radio button
-	@FindBy(xpath = "//label[@for='radio4']")
-	WebElement selectMonthRadio;
-
-	// Click on the submit button
-	@FindBy(xpath = "//div[@class='flex flex-column gap-1']//button[@class='solid_btn flex-1'][normalize-space()='Submit']")
-	WebElement selectSubmit;
-
-	// Click on the submit button
-	public void selectSubmit() {
-		selectSubmit.click();
-	}
-
-	// Select Month Radio button
-	public void selectMonthRadio() {
-		selectMonthRadio.click();
-	}
-
-	// Enter date range
-	@FindBy(xpath = "//input[@id='formEffectiveDate']")
-	WebElement putDateRange;
+	// -------------Display Count----------------//
 
 	// Displaying Count
 	@FindBy(xpath = "(//div[@class='toolbar text-sm py-2 px-2 border-round-lg flex-1'])[1]")
 	WebElement displayCount;
 
-	// Input date Range
-	public String inputDateRange(String startDateStr, String endDateStr) throws ParseException {
-		String dateRangeStr = startDateStr + " - " + endDateStr;
-		putDateRange.sendKeys(dateRangeStr);
-		displayCount.click();
-		return dateRangeStr;
+	public int[] verifyDataCount() throws InterruptedException {
+		int[] count = verifyDataCountAcrossPages();
+		return count;
 	}
 
-	// Verify radio button selected
-	public boolean verifyRadiobuttonSelected(String startDateStr, String endDateStr) throws ParseException {
-		String dateRangeStr = startDateStr + " - " + endDateStr;
-		putDateRange.sendKeys(dateRangeStr);
-		displayCount.click();
-		// Locate the radio button
-		return selectMonthRadio.getAttribute("class").contains("p-radiobutton-checked");
-
-	}
-
-	// Put Date Range
-	@FindBy(xpath = "(//p-calendar[@placeholder='DD/MM/YYYY - DD/MM/YYYY'])[1]")
-	WebElement putDateRangeCalendar;
-
-	// Verify radio button selected
-	public boolean verifyDateRangeFieldCleared(String startDateStr, String endDateStr) throws ParseException {
-		String dateRangeStr = startDateStr + " - " + endDateStr;
-		putDateRange.sendKeys(dateRangeStr);
-		displayCount.click();
-		selectMonthRadio.click();
-		return putDateRangeCalendar.getAttribute("class").contains("ng-invalid");
-
-	}
+	// ------------------- Test Pagination functionality-----------------//
 
 	// Test Pagination functionality
 
@@ -130,13 +90,68 @@ public class Forms extends MenuBar {
 	public int[] checkLastPageBtn() throws InterruptedException {
 		return clickLastPageButton();
 	}
-	
-	public int[] verifyDataCount() throws InterruptedException {
-		int[] count = verifyDataCountAcrossPages();
-		return count;
+
+	// ---------------Click On The Submit Button--------------//
+
+	// Click on the submit button
+	@FindBy(xpath = "//div[@class='flex flex-column gap-1']//button[@class='solid_btn flex-1'][normalize-space()='Submit']")
+	WebElement selectSubmit;
+
+	// Click on the submit button
+	public void selectSubmit() {
+		scrollToElement(selectSubmit);
+		selectSubmit.click();
 	}
-	
-	public boolean verifyDataWithinDateRange(String startDateStr, String endDateStr) throws ParseException, InterruptedException {
+
+	// ----------------------Effective Date--------------------------//
+
+	// Select Month Radio button
+	@FindBy(xpath = "//label[@for='radio4']")
+	WebElement selectMonthRadio;
+
+	// Select Month Radio button
+	public void selectMonthRadio() {
+		selectMonthRadio.click();
+	}
+
+	// Put Date Range
+	@FindBy(xpath = "(//p-calendar[@placeholder='DD/MM/YYYY - DD/MM/YYYY'])[1]")
+	WebElement putDateRangeCalendar;
+
+	// Enter date range
+	@FindBy(xpath = "//input[@id='formEffectiveDate']")
+	WebElement putDateRange;
+
+	// Input date Range
+	public String inputDateRange(String startDateStr, String endDateStr) throws ParseException {
+		String dateRangeStr = startDateStr + " - " + endDateStr;
+		putDateRange.sendKeys(dateRangeStr);
+		displayCount.click();
+		return dateRangeStr;
+	}
+
+	// Verify radio button selected
+	public boolean verifyRadiobuttonSelected(String startDateStr, String endDateStr) throws ParseException {
+		String dateRangeStr = startDateStr + " - " + endDateStr;
+		putDateRange.sendKeys(dateRangeStr);
+		displayCount.click();
+		// Locate the radio button
+		return selectMonthRadio.getAttribute("class").contains("p-radiobutton-checked");
+
+	}
+
+	// Verify radio button selected
+	public boolean verifyDateRangeFieldCleared(String startDateStr, String endDateStr) throws ParseException {
+		String dateRangeStr = startDateStr + " - " + endDateStr;
+		putDateRange.sendKeys(dateRangeStr);
+		displayCount.click();
+		selectMonthRadio.click();
+		return putDateRangeCalendar.getAttribute("class").contains("ng-invalid");
+
+	}
+
+	public boolean verifyDataWithinDateRange(String startDateStr, String endDateStr)
+			throws ParseException, InterruptedException {
 		// Define date range
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date startDate = sdf.parse(startDateStr);

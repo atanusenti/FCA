@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>18/1/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>55/4/0</td>
 </tr><tr>
-<td>Started on:</td><td>Fri Oct 25 11:49:30 IST 2024</td>
+<td>Started on:</td><td>Mon Nov 18 13:34:20 IST 2024</td>
 </tr>
-<tr><td>Total time:</td><td>90 seconds (90735 ms)</td>
+<tr><td>Total time:</td><td>2407 seconds (2407132 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,23 +75,26 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='fcaa.testCase.latestNews.verifyRadioButtonUnselect()'><b>verifyRadioButtonUnselect</b><br>Test class: fcaa.testCase.latestNews<br/>
-<a href="#Output-208437930" onClick='toggleBox("Output-208437930", this, "Show output", "Hide output");'>Show output</a>
+<td title='fcaa.testCase.level3materials.testTitleDescending()'><b>testTitleDescending</b><br>Test class: fcaa.testCase.level3materials<br/>
+<a href="#Output-2062346332" onClick='toggleBox("Output-2062346332", this, "Show output", "Hide output");'>Show output</a>
 
-<a href="#Output-208437930" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-208437930">
-Starting test: verifyRadioButtonUnselect<br/>
+<a href="#Output-2062346332" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2062346332">
+Starting test: testTitleDescending<br/>
+Next Page button is disabled or not found<br/>
+Next Page button is disabled or not found<br/>
 </div>
 </td>
-<td><div><pre>java.lang.AssertionError: Radio button should be unselected after entering date range. expected [false] but found [true]
-	at fcaa.testCase.latestNews.verifyRadioButtonUnselect(latestNews.java:119)
+<td><div><pre>java.lang.AssertionError: expected [true] but found [false]
+	at fcaa.testCase.level3materials.testTitleDescending(level3materials.java:93)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace208437930", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace208437930'><pre>java.lang.AssertionError: Radio button should be unselected after entering date range. expected [false] but found [true]
+... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2062346332", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2062346332'><pre>java.lang.AssertionError: expected [true] but found [false]
 	at org.testng.Assert.fail(Assert.java:99)
 	at org.testng.Assert.failNotEquals(Assert.java:1037)
-	at org.testng.Assert.assertFalse(Assert.java:67)
-	at fcaa.testCase.latestNews.verifyRadioButtonUnselect(latestNews.java:119)
+	at org.testng.Assert.assertTrue(Assert.java:45)
+	at org.testng.Assert.assertTrue(Assert.java:55)
+	at fcaa.testCase.level3materials.testTitleDescending(level3materials.java:93)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
@@ -119,8 +122,264 @@ Starting test: verifyRadioButtonUnselect<br/>
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
 </pre></div></td>
-<td>1</td>
-<td>fcaa.testCase.latestNews@6f1de4c7</td></tr>
+<td>46</td>
+<td>fcaa.testCase.level3materials@4c402120</td></tr>
+<tr>
+<td title='fcaa.testCase.instruments.verifyLastPageNumber()'><b>verifyLastPageNumber</b><br>Test class: fcaa.testCase.instruments<br/>
+<a href="#Output-539085761" onClick='toggleBox("Output-539085761", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-539085761" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-539085761">
+Starting test: verifyLastPageNumber<br/>
+</div>
+</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;button[aria-label=&apos;First Page&apos;]&quot;}
+  (Session info: chrome=130.0.6723.117)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.23.0&apos;, revision: &apos;4df0a231af&apos;
+System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;22.0.2&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [8eb3267f9862bccb61dd20d64f564a34, findElement {using=css selector, value=button[aria-label=&apos;First Page&apos;]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 130.0.6723.117, chrome: {chromedriverVersion: 130.0.6723.116 (6ac35f94ae3..., userDataDir: C:\Users\ROYALT~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:51924}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:51924/devtoo..., se:cdpVersion: 130.0.6723.117, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 8eb3267f9862bccb61dd20d64f564a34
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:527)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:357)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:351)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy15.getWrappedElement(Unknown Source)
+	at org.openqa.selenium.remote.WebElementToJsonConverter.apply(WebElementToJsonConverter.java:48)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:212)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:556)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:546)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:702)
+	at org.openqa.selenium.remote.RemoteWebDriver.executeScript(RemoteWebDriver.java:463)
+	at fcaa.AbstractComponnent.Utility.scrollToElement(Utility.java:488)
+	at fcaa.AbstractComponnent.Utility.clickLastPageButton(Utility.java:456)
+	at fcaa.pageObject.Instruments.checkLastPageBtn(Instruments.java:95)
+	at fcaa.testCase.instruments.verifyLastPageNumber(instruments.java:141)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace539085761", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace539085761'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;button[aria-label=&apos;First Page&apos;]&quot;}
+  (Session info: chrome=130.0.6723.117)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.23.0&apos;, revision: &apos;4df0a231af&apos;
+System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;22.0.2&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [8eb3267f9862bccb61dd20d64f564a34, findElement {using=css selector, value=button[aria-label=&apos;First Page&apos;]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 130.0.6723.117, chrome: {chromedriverVersion: 130.0.6723.116 (6ac35f94ae3..., userDataDir: C:\Users\ROYALT~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:51924}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:51924/devtoo..., se:cdpVersion: 130.0.6723.117, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 8eb3267f9862bccb61dd20d64f564a34
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:527)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:357)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:351)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy15.getWrappedElement(Unknown Source)
+	at org.openqa.selenium.remote.WebElementToJsonConverter.apply(WebElementToJsonConverter.java:48)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:212)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:1024)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:556)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:546)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:265)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:702)
+	at org.openqa.selenium.remote.RemoteWebDriver.executeScript(RemoteWebDriver.java:463)
+	at fcaa.AbstractComponnent.Utility.scrollToElement(Utility.java:488)
+	at fcaa.AbstractComponnent.Utility.clickLastPageButton(Utility.java:456)
+	at fcaa.pageObject.Instruments.checkLastPageBtn(Instruments.java:95)
+	at fcaa.testCase.instruments.verifyLastPageNumber(instruments.java:141)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+</pre></div></td>
+<td>10</td>
+<td>fcaa.testCase.instruments@327514f</td></tr>
+<tr>
+<td title='fcaa.testCase.level3materials.testTitleAscending()'><b>testTitleAscending</b><br>Test class: fcaa.testCase.level3materials<br/>
+<a href="#Output-549712774" onClick='toggleBox("Output-549712774", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-549712774" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-549712774">
+Starting test: testTitleAscending<br/>
+</div>
+</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//span[normalize-space()=&apos;Title Descending&apos;]&quot;}
+  (Session info: chrome=130.0.6723.117)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.23.0&apos;, revision: &apos;4df0a231af&apos;
+System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;22.0.2&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [193196f6b07a2296c8f95a1124367d24, findElement {using=xpath, value=//span[normalize-space()=&apos;Title Descending&apos;]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 130.0.6723.117, chrome: {chromedriverVersion: 130.0.6723.116 (6ac35f94ae3..., userDataDir: C:\Users\ROYALT~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64136}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64136/devtoo..., se:cdpVersion: 130.0.6723.117, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 193196f6b07a2296c8f95a1124367d24
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:527)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:357)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:351)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy15.click(Unknown Source)
+	at fcaa.AbstractComponnent.Utility.selectDescending(Utility.java:82)
+	at fcaa.testCase.level3materials.testTitleAscending(level3materials.java:100)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace549712774", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace549712774'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//span[normalize-space()=&apos;Title Descending&apos;]&quot;}
+  (Session info: chrome=130.0.6723.117)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.23.0&apos;, revision: &apos;4df0a231af&apos;
+System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;22.0.2&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [193196f6b07a2296c8f95a1124367d24, findElement {using=xpath, value=//span[normalize-space()=&apos;Title Descending&apos;]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 130.0.6723.117, chrome: {chromedriverVersion: 130.0.6723.116 (6ac35f94ae3..., userDataDir: C:\Users\ROYALT~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64136}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64136/devtoo..., se:cdpVersion: 130.0.6723.117, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 193196f6b07a2296c8f95a1124367d24
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:527)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:357)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:351)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy15.click(Unknown Source)
+	at fcaa.AbstractComponnent.Utility.selectDescending(Utility.java:82)
+	at fcaa.testCase.level3materials.testTitleAscending(level3materials.java:100)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+</pre></div></td>
+<td>6</td>
+<td>fcaa.testCase.level3materials@4c402120</td></tr>
+<tr>
+<td title='fcaa.testCase.forms.verifyDataWithinDateRange()'><b>verifyDataWithinDateRange</b><br>Test class: fcaa.testCase.forms<br/>
+<a href="#Output-80035947" onClick='toggleBox("Output-80035947", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-80035947" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-80035947">
+Starting test: verifyDataWithinDateRange<br/>
+Next Page button is disabled<br/>
+</div>
+</td>
+<td><div><pre>java.lang.AssertionError: Not all displayed dates are within the specified range. expected [true] but found [false]
+	at fcaa.testCase.forms.verifyDataWithinDateRange(forms.java:193)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace80035947", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace80035947'><pre>java.lang.AssertionError: Not all displayed dates are within the specified range. expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:99)
+	at org.testng.Assert.failNotEquals(Assert.java:1037)
+	at org.testng.Assert.assertTrue(Assert.java:45)
+	at fcaa.testCase.forms.verifyDataWithinDateRange(forms.java:193)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+</pre></div></td>
+<td>47</td>
+<td>fcaa.testCase.forms@2d1ef81a</td></tr>
 </table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
@@ -130,197 +389,355 @@ Starting test: verifyRadioButtonUnselect<br/>
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='fcaa.testCase.latestNews.testTitleAscending()'><b>testTitleAscending</b><br>Test class: fcaa.testCase.latestNews<br/>
-<a href="#Output-1742900195" onClick='toggleBox("Output-1742900195", this, "Show output", "Hide output");'>Show output</a>
+<td title='fcaa.testCase.latestNews.testdateRange()'><b>testdateRange</b><br>Test class: fcaa.testCase.latestNews<br/>
+<a href="#Output-488928549" onClick='toggleBox("Output-488928549", this, "Show output", "Hide output");'>Show output</a>
 
-<a href="#Output-1742900195" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-1742900195">
-Starting test: testTitleAscending<br/>
-Finished test: testTitleAscending<br/>
+<a href="#Output-488928549" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-488928549">
+Starting test: testdateRange<br/>
+Finished test: testdateRange<br/>
 </div>
 </td>
 <td></td>
 <td>1</td>
-<td>fcaa.testCase.latestNews@6f1de4c7</td></tr>
+<td>fcaa.testCase.latestNews@47eaca72</td></tr>
 <tr>
-<td title='fcaa.testCase.latestNews.testVerifyOpenPdfInNewTab()'><b>testVerifyOpenPdfInNewTab</b><br>Test class: fcaa.testCase.latestNews<br/>
-<a href="#Output-825791803" onClick='toggleBox("Output-825791803", this, "Show output", "Hide output");'>Show output</a>
+<td title='fcaa.testCase.instruments.verifyEffectiveDateRadioButtonUnselect()'><b>verifyEffectiveDateRadioButtonUnselect</b><br>Test class: fcaa.testCase.instruments<br/>
+<a href="#Output-1915356334" onClick='toggleBox("Output-1915356334", this, "Show output", "Hide output");'>Show output</a>
 
-<a href="#Output-825791803" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-825791803">
-Starting test: testVerifyOpenPdfInNewTab<br/>
-Finished test: testVerifyOpenPdfInNewTab<br/>
+<a href="#Output-1915356334" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1915356334">
+Starting test: verifyEffectiveDateRadioButtonUnselect<br/>
+Finished test: verifyEffectiveDateRadioButtonUnselect<br/>
 </div>
 </td>
 <td></td>
-<td>3</td>
-<td>fcaa.testCase.latestNews@6f1de4c7</td></tr>
+<td>1</td>
+<td>fcaa.testCase.instruments@327514f</td></tr>
 <tr>
-<td title='fcaa.testCase.latestNews.testMonthRadio()'><b>testMonthRadio</b><br>Test class: fcaa.testCase.latestNews<br/>
-<a href="#Output-962927234" onClick='toggleBox("Output-962927234", this, "Show output", "Hide output");'>Show output</a>
+<td title='fcaa.testCase.forms.testTitleAscending()'><b>testTitleAscending</b><br>Test class: fcaa.testCase.forms<br/>
+<a href="#Output-1162833093" onClick='toggleBox("Output-1162833093", this, "Show output", "Hide output");'>Show output</a>
 
-<a href="#Output-962927234" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-962927234">
-Starting test: testMonthRadio<br/>
-Finished test: testMonthRadio<br/>
+<a href="#Output-1162833093" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1162833093">
+Starting test: testTitleAscending<br/>
+Next Page button is disabled or not found<br/>
+Next Page button is disabled or not found<br/>
+Finished test: testTitleAscending<br/>
 </div>
 </td>
 <td></td>
-<td>0</td>
-<td>fcaa.testCase.latestNews@6f1de4c7</td></tr>
+<td>163</td>
+<td>fcaa.testCase.forms@2d1ef81a</td></tr>
+<tr>
+<td title='fcaa.testCase.latestNews.testTitleAscending()'><b>testTitleAscending</b><br>Test class: fcaa.testCase.latestNews<br/>
+<a href="#Output-170778406" onClick='toggleBox("Output-170778406", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-170778406" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-170778406">
+Starting test: testTitleAscending<br/>
+Next Page button is disabled or not found<br/>
+Next Page button is disabled or not found<br/>
+Finished test: testTitleAscending<br/>
+</div>
+</td>
+<td></td>
+<td>22</td>
+<td>fcaa.testCase.latestNews@47eaca72</td></tr>
+<tr>
+<td title='fcaa.testCase.latestNews.verifyDateRangeClear()'><b>verifyDateRangeClear</b><br>Test class: fcaa.testCase.latestNews<br/>
+<a href="#Output-1709321711" onClick='toggleBox("Output-1709321711", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1709321711" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1709321711">
+Starting test: verifyDateRangeClear<br/>
+Finished test: verifyDateRangeClear<br/>
+</div>
+</td>
+<td></td>
+<td>1</td>
+<td>fcaa.testCase.latestNews@47eaca72</td></tr>
+<tr>
+<td title='fcaa.testCase.instruments.testTitleDescending()'><b>testTitleDescending</b><br>Test class: fcaa.testCase.instruments<br/>
+<a href="#Output-1591292118" onClick='toggleBox("Output-1591292118", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1591292118" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1591292118">
+Starting test: testTitleDescending<br/>
+Next Page button is disabled or not found<br/>
+Next Page button is disabled or not found<br/>
+Finished test: testTitleDescending<br/>
+</div>
+</td>
+<td></td>
+<td>334</td>
+<td>fcaa.testCase.instruments@327514f</td></tr>
 <tr>
 <td title='fcaa.testCase.latestNews.verifyLinkText()'><b>verifyLinkText</b><br>Test class: fcaa.testCase.latestNews<br/>
-<a href="#Output-1171094469" onClick='toggleBox("Output-1171094469", this, "Show output", "Hide output");'>Show output</a>
+<a href="#Output-1769827821" onClick='toggleBox("Output-1769827821", this, "Show output", "Hide output");'>Show output</a>
 
-<a href="#Output-1171094469" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-1171094469">
+<a href="#Output-1769827821" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1769827821">
 Starting test: verifyLinkText<br/>
 Finished test: verifyLinkText<br/>
 </div>
 </td>
 <td></td>
 <td>2</td>
-<td>fcaa.testCase.latestNews@6f1de4c7</td></tr>
+<td>fcaa.testCase.latestNews@47eaca72</td></tr>
+<tr>
+<td title='fcaa.testCase.forms.verifyLastPageNumber()'><b>verifyLastPageNumber</b><br>Test class: fcaa.testCase.forms<br/>
+<a href="#Output-1092465037" onClick='toggleBox("Output-1092465037", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1092465037" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1092465037">
+Starting test: verifyLastPageNumber<br/>
+Finished test: verifyLastPageNumber<br/>
+</div>
+</td>
+<td></td>
+<td>16</td>
+<td>fcaa.testCase.forms@2d1ef81a</td></tr>
+<tr>
+<td title='fcaa.testCase.instruments.testPublisheddateRange()'><b>testPublisheddateRange</b><br>Test class: fcaa.testCase.instruments<br/>
+<a href="#Output-229752864" onClick='toggleBox("Output-229752864", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-229752864" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-229752864">
+Starting test: testPublisheddateRange<br/>
+Finished test: testPublisheddateRange<br/>
+</div>
+</td>
+<td></td>
+<td>1</td>
+<td>fcaa.testCase.instruments@327514f</td></tr>
+<tr>
+<td title='fcaa.testCase.latestNews.verifygoBack()'><b>verifygoBack</b><br>Test class: fcaa.testCase.latestNews<br/>
+<a href="#Output-1543105131" onClick='toggleBox("Output-1543105131", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1543105131" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1543105131">
+Starting test: verifygoBack<br/>
+Finished test: verifygoBack<br/>
+</div>
+</td>
+<td></td>
+<td>2</td>
+<td>fcaa.testCase.latestNews@47eaca72</td></tr>
+<tr>
+<td title='fcaa.testCase.instruments.verifyNextPageNumber()'><b>verifyNextPageNumber</b><br>Test class: fcaa.testCase.instruments<br/>
+<a href="#Output-2102747587" onClick='toggleBox("Output-2102747587", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2102747587" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2102747587">
+Starting test: verifyNextPageNumber<br/>
+Finished test: verifyNextPageNumber<br/>
+</div>
+</td>
+<td></td>
+<td>11</td>
+<td>fcaa.testCase.instruments@327514f</td></tr>
+<tr>
+<td title='fcaa.testCase.latestNews.testOldest()'><b>testOldest</b><br>Test class: fcaa.testCase.latestNews<br/>
+<a href="#Output-435297131" onClick='toggleBox("Output-435297131", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-435297131" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-435297131">
+Starting test: testOldest<br/>
+Next Page button is disabled<br/>
+Next Page button is disabled<br/>
+Finished test: testOldest<br/>
+</div>
+</td>
+<td></td>
+<td>14</td>
+<td>fcaa.testCase.latestNews@47eaca72</td></tr>
+<tr>
+<td title='fcaa.testCase.forms.testMonthRadio()'><b>testMonthRadio</b><br>Test class: fcaa.testCase.forms<br/>
+<a href="#Output-2062061041" onClick='toggleBox("Output-2062061041", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2062061041" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2062061041">
+Starting test: testMonthRadio<br/>
+Finished test: testMonthRadio<br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>fcaa.testCase.forms@2d1ef81a</td></tr>
+<tr>
+<td title='fcaa.testCase.forms.verifyNextPageNumber()'><b>verifyNextPageNumber</b><br>Test class: fcaa.testCase.forms<br/>
+<a href="#Output-1872328450" onClick='toggleBox("Output-1872328450", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1872328450" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1872328450">
+Starting test: verifyNextPageNumber<br/>
+Finished test: verifyNextPageNumber<br/>
+</div>
+</td>
+<td></td>
+<td>11</td>
+<td>fcaa.testCase.forms@2d1ef81a</td></tr>
+<tr>
+<td title='fcaa.testCase.instruments.testTitleAscending()'><b>testTitleAscending</b><br>Test class: fcaa.testCase.instruments<br/>
+<a href="#Output-1148185073" onClick='toggleBox("Output-1148185073", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1148185073" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1148185073">
+Starting test: testTitleAscending<br/>
+Next Page button is disabled or not found<br/>
+Next Page button is disabled or not found<br/>
+Finished test: testTitleAscending<br/>
+</div>
+</td>
+<td></td>
+<td>339</td>
+<td>fcaa.testCase.instruments@327514f</td></tr>
+<tr>
+<td title='fcaa.testCase.latestNews.testTitleDescending()'><b>testTitleDescending</b><br>Test class: fcaa.testCase.latestNews<br/>
+<a href="#Output-732688777" onClick='toggleBox("Output-732688777", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-732688777" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-732688777">
+Starting test: testTitleDescending<br/>
+Next Page button is disabled or not found<br/>
+Next Page button is disabled or not found<br/>
+Finished test: testTitleDescending<br/>
+</div>
+</td>
+<td></td>
+<td>23</td>
+<td>fcaa.testCase.latestNews@47eaca72</td></tr>
+<tr>
+<td title='fcaa.testCase.forms.verifyDateRangeClear()'><b>verifyDateRangeClear</b><br>Test class: fcaa.testCase.forms<br/>
+<a href="#Output-44442500" onClick='toggleBox("Output-44442500", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-44442500" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-44442500">
+Starting test: verifyDateRangeClear<br/>
+Finished test: verifyDateRangeClear<br/>
+</div>
+</td>
+<td></td>
+<td>6</td>
+<td>fcaa.testCase.forms@2d1ef81a</td></tr>
+<tr>
+<td title='fcaa.testCase.instruments.testOldest()'><b>testOldest</b><br>Test class: fcaa.testCase.instruments<br/>
+<a href="#Output-1732125595" onClick='toggleBox("Output-1732125595", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1732125595" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1732125595">
+Starting test: testOldest<br/>
+Next Page button is disabled<br/>
+Next Page button is disabled<br/>
+Finished test: testOldest<br/>
+</div>
+</td>
+<td></td>
+<td>174</td>
+<td>fcaa.testCase.instruments@327514f</td></tr>
 <tr>
 <td title='fcaa.testCase.latestNews.verifyLastPageNumber()'><b>verifyLastPageNumber</b><br>Test class: fcaa.testCase.latestNews<br/>
-<a href="#Output-1610014012" onClick='toggleBox("Output-1610014012", this, "Show output", "Hide output");'>Show output</a>
+<a href="#Output-1474310983" onClick='toggleBox("Output-1474310983", this, "Show output", "Hide output");'>Show output</a>
 
-<a href="#Output-1610014012" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-1610014012">
+<a href="#Output-1474310983" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1474310983">
 Starting test: verifyLastPageNumber<br/>
 Last Page button is disabled<br/>
 Finished test: verifyLastPageNumber<br/>
 </div>
 </td>
 <td></td>
+<td>8</td>
+<td>fcaa.testCase.latestNews@47eaca72</td></tr>
+<tr>
+<td title='fcaa.testCase.forms.testTitleDescending()'><b>testTitleDescending</b><br>Test class: fcaa.testCase.forms<br/>
+<a href="#Output-115653836" onClick='toggleBox("Output-115653836", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-115653836" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-115653836">
+Starting test: testTitleDescending<br/>
+Next Page button is disabled or not found<br/>
+Next Page button is disabled or not found<br/>
+Finished test: testTitleDescending<br/>
+</div>
+</td>
+<td></td>
+<td>171</td>
+<td>fcaa.testCase.forms@2d1ef81a</td></tr>
+<tr>
+<td title='fcaa.testCase.instruments.verifyTotalCount()'><b>verifyTotalCount</b><br>Test class: fcaa.testCase.instruments<br/>
+<a href="#Output-237383949" onClick='toggleBox("Output-237383949", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-237383949" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-237383949">
+Starting test: verifyTotalCount<br/>
+Finished test: verifyTotalCount<br/>
+</div>
+</td>
+<td></td>
+<td>74</td>
+<td>fcaa.testCase.instruments@327514f</td></tr>
+<tr>
+<td title='fcaa.testCase.forms.verifyRadioButtonUnselect()'><b>verifyRadioButtonUnselect</b><br>Test class: fcaa.testCase.forms<br/>
+<a href="#Output-965699106" onClick='toggleBox("Output-965699106", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-965699106" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-965699106">
+Starting test: verifyRadioButtonUnselect<br/>
+Finished test: verifyRadioButtonUnselect<br/>
+</div>
+</td>
+<td></td>
 <td>0</td>
-<td>fcaa.testCase.latestNews@6f1de4c7</td></tr>
+<td>fcaa.testCase.forms@2d1ef81a</td></tr>
+<tr>
+<td title='fcaa.testCase.forms.testdateRange()'><b>testdateRange</b><br>Test class: fcaa.testCase.forms<br/>
+<a href="#Output-283923651" onClick='toggleBox("Output-283923651", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-283923651" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-283923651">
+Starting test: testdateRange<br/>
+Finished test: testdateRange<br/>
+</div>
+</td>
+<td></td>
+<td>1</td>
+<td>fcaa.testCase.forms@2d1ef81a</td></tr>
 <tr>
 <td title='fcaa.testCase.latestNews.testNewest()'><b>testNewest</b><br>Test class: fcaa.testCase.latestNews<br/>
-<a href="#Output-1402333753" onClick='toggleBox("Output-1402333753", this, "Show output", "Hide output");'>Show output</a>
+<a href="#Output-98801744" onClick='toggleBox("Output-98801744", this, "Show output", "Hide output");'>Show output</a>
 
-<a href="#Output-1402333753" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-1402333753">
+<a href="#Output-98801744" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-98801744">
 Starting test: testNewest<br/>
+Next Page button is disabled<br/>
+Next Page button is disabled<br/>
 Finished test: testNewest<br/>
 </div>
 </td>
 <td></td>
-<td>1</td>
-<td>fcaa.testCase.latestNews@6f1de4c7</td></tr>
+<td>14</td>
+<td>fcaa.testCase.latestNews@47eaca72</td></tr>
 <tr>
-<td title='fcaa.testCase.latestNews.testOldest()'><b>testOldest</b><br>Test class: fcaa.testCase.latestNews<br/>
-<a href="#Output-1731967318" onClick='toggleBox("Output-1731967318", this, "Show output", "Hide output");'>Show output</a>
+<td title='fcaa.testCase.forms.testsearchbox()'><b>testsearchbox</b><br>Test class: fcaa.testCase.forms<br/>
+<a href="#Output-932736431" onClick='toggleBox("Output-932736431", this, "Show output", "Hide output");'>Show output</a>
 
-<a href="#Output-1731967318" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-1731967318">
-Starting test: testOldest<br/>
-Finished test: testOldest<br/>
-</div>
-</td>
-<td></td>
-<td>1</td>
-<td>fcaa.testCase.latestNews@6f1de4c7</td></tr>
-<tr>
-<td title='fcaa.testCase.latestNews.verifyPreviousPageNumber()'><b>verifyPreviousPageNumber</b><br>Test class: fcaa.testCase.latestNews<br/>
-<a href="#Output-529893402" onClick='toggleBox("Output-529893402", this, "Show output", "Hide output");'>Show output</a>
-
-<a href="#Output-529893402" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-529893402">
-Starting test: verifyPreviousPageNumber<br/>
-Next Page button is disabled<br/>
-Previous Page button is disabled<br/>
-Finished test: verifyPreviousPageNumber<br/>
-</div>
-</td>
-<td></td>
-<td>0</td>
-<td>fcaa.testCase.latestNews@6f1de4c7</td></tr>
-<tr>
-<td title='fcaa.testCase.latestNews.testsearchbox()'><b>testsearchbox</b><br>Test class: fcaa.testCase.latestNews<br/>
-<a href="#Output-426288284" onClick='toggleBox("Output-426288284", this, "Show output", "Hide output");'>Show output</a>
-
-<a href="#Output-426288284" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-426288284">
+<a href="#Output-932736431" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-932736431">
 Starting test: testsearchbox<br/>
 Finished test: testsearchbox<br/>
 </div>
 </td>
 <td></td>
 <td>0</td>
-<td>fcaa.testCase.latestNews@6f1de4c7</td></tr>
-<tr>
-<td title='fcaa.testCase.latestNews.testTitleDescending()'><b>testTitleDescending</b><br>Test class: fcaa.testCase.latestNews<br/>
-<a href="#Output-487764004" onClick='toggleBox("Output-487764004", this, "Show output", "Hide output");'>Show output</a>
-
-<a href="#Output-487764004" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-487764004">
-Starting test: testTitleDescending<br/>
-Finished test: testTitleDescending<br/>
-</div>
-</td>
-<td></td>
-<td>1</td>
-<td>fcaa.testCase.latestNews@6f1de4c7</td></tr>
-<tr>
-<td title='fcaa.testCase.latestNews.verifygoBack()'><b>verifygoBack</b><br>Test class: fcaa.testCase.latestNews<br/>
-<a href="#Output-324008184" onClick='toggleBox("Output-324008184", this, "Show output", "Hide output");'>Show output</a>
-
-<a href="#Output-324008184" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-324008184">
-Starting test: verifygoBack<br/>
-Finished test: verifygoBack<br/>
-</div>
-</td>
-<td></td>
-<td>1</td>
-<td>fcaa.testCase.latestNews@6f1de4c7</td></tr>
-<tr>
-<td title='fcaa.testCase.latestNews.verifyDateRangeClear()'><b>verifyDateRangeClear</b><br>Test class: fcaa.testCase.latestNews<br/>
-<a href="#Output-159190022" onClick='toggleBox("Output-159190022", this, "Show output", "Hide output");'>Show output</a>
-
-<a href="#Output-159190022" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-159190022">
-Starting test: verifyDateRangeClear<br/>
-Finished test: verifyDateRangeClear<br/>
-</div>
-</td>
-<td></td>
-<td>0</td>
-<td>fcaa.testCase.latestNews@6f1de4c7</td></tr>
-<tr>
-<td title='fcaa.testCase.latestNews.verifyNextPageNumber()'><b>verifyNextPageNumber</b><br>Test class: fcaa.testCase.latestNews<br/>
-<a href="#Output-1670849676" onClick='toggleBox("Output-1670849676", this, "Show output", "Hide output");'>Show output</a>
-
-<a href="#Output-1670849676" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-1670849676">
-Starting test: verifyNextPageNumber<br/>
-Next Page button is disabled<br/>
-Finished test: verifyNextPageNumber<br/>
-</div>
-</td>
-<td></td>
-<td>0</td>
-<td>fcaa.testCase.latestNews@6f1de4c7</td></tr>
-<tr>
-<td title='fcaa.testCase.latestNews.verifyTotalCount()'><b>verifyTotalCount</b><br>Test class: fcaa.testCase.latestNews<br/>
-<a href="#Output-485542604" onClick='toggleBox("Output-485542604", this, "Show output", "Hide output");'>Show output</a>
-
-<a href="#Output-485542604" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-485542604">
-Starting test: verifyTotalCount<br/>
-Finished test: verifyTotalCount<br/>
-</div>
-</td>
-<td></td>
-<td>0</td>
-<td>fcaa.testCase.latestNews@6f1de4c7</td></tr>
+<td>fcaa.testCase.forms@2d1ef81a</td></tr>
 <tr>
 <td title='fcaa.testCase.latestNews.verifyFirstPageNumber()'><b>verifyFirstPageNumber</b><br>Test class: fcaa.testCase.latestNews<br/>
-<a href="#Output-261925632" onClick='toggleBox("Output-261925632", this, "Show output", "Hide output");'>Show output</a>
+<a href="#Output-1770453310" onClick='toggleBox("Output-1770453310", this, "Show output", "Hide output");'>Show output</a>
 
-<a href="#Output-261925632" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-261925632">
+<a href="#Output-1770453310" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1770453310">
 Starting test: verifyFirstPageNumber<br/>
 Next Page button is disabled<br/>
 First Page button is disabled<br/>
@@ -328,47 +745,395 @@ Finished test: verifyFirstPageNumber<br/>
 </div>
 </td>
 <td></td>
-<td>0</td>
-<td>fcaa.testCase.latestNews@6f1de4c7</td></tr>
+<td>16</td>
+<td>fcaa.testCase.latestNews@47eaca72</td></tr>
 <tr>
-<td title='fcaa.testCase.latestNews.testdateRange()'><b>testdateRange</b><br>Test class: fcaa.testCase.latestNews<br/>
-<a href="#Output-1706453768" onClick='toggleBox("Output-1706453768", this, "Show output", "Hide output");'>Show output</a>
+<td title='fcaa.testCase.instruments.verifyPreviousPageNumber()'><b>verifyPreviousPageNumber</b><br>Test class: fcaa.testCase.instruments<br/>
+<a href="#Output-184710968" onClick='toggleBox("Output-184710968", this, "Show output", "Hide output");'>Show output</a>
 
-<a href="#Output-1706453768" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-1706453768">
-Starting test: testdateRange<br/>
-Finished test: testdateRange<br/>
+<a href="#Output-184710968" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-184710968">
+Starting test: verifyPreviousPageNumber<br/>
+Finished test: verifyPreviousPageNumber<br/>
+</div>
+</td>
+<td></td>
+<td>19</td>
+<td>fcaa.testCase.instruments@327514f</td></tr>
+<tr>
+<td title='fcaa.testCase.forms.testNewest()'><b>testNewest</b><br>Test class: fcaa.testCase.forms<br/>
+<a href="#Output-1230752231" onClick='toggleBox("Output-1230752231", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1230752231" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1230752231">
+Starting test: testNewest<br/>
+Next Page button is disabled<br/>
+Next Page button is disabled<br/>
+Finished test: testNewest<br/>
+</div>
+</td>
+<td></td>
+<td>91</td>
+<td>fcaa.testCase.forms@2d1ef81a</td></tr>
+<tr>
+<td title='fcaa.testCase.level3materials.verifyTotalCount()'><b>verifyTotalCount</b><br>Test class: fcaa.testCase.level3materials<br/>
+<a href="#Output-147511691" onClick='toggleBox("Output-147511691", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-147511691" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-147511691">
+Starting test: verifyTotalCount<br/>
+Finished test: verifyTotalCount<br/>
+</div>
+</td>
+<td></td>
+<td>11</td>
+<td>fcaa.testCase.level3materials@4c402120</td></tr>
+<tr>
+<td title='fcaa.testCase.instruments.verifyPublishedDateRadioButtonUnselect()'><b>verifyPublishedDateRadioButtonUnselect</b><br>Test class: fcaa.testCase.instruments<br/>
+<a href="#Output-2062937268" onClick='toggleBox("Output-2062937268", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2062937268" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2062937268">
+Starting test: verifyPublishedDateRadioButtonUnselect<br/>
+Finished test: verifyPublishedDateRadioButtonUnselect<br/>
+</div>
+</td>
+<td></td>
+<td>6</td>
+<td>fcaa.testCase.instruments@327514f</td></tr>
+<tr>
+<td title='fcaa.testCase.instruments.testNewest()'><b>testNewest</b><br>Test class: fcaa.testCase.instruments<br/>
+<a href="#Output-363694440" onClick='toggleBox("Output-363694440", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-363694440" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-363694440">
+Starting test: testNewest<br/>
+Next Page button is disabled<br/>
+Next Page button is disabled<br/>
+Finished test: testNewest<br/>
+</div>
+</td>
+<td></td>
+<td>174</td>
+<td>fcaa.testCase.instruments@327514f</td></tr>
+<tr>
+<td title='fcaa.testCase.instruments.verifyPublishedDateRangeClear()'><b>verifyPublishedDateRangeClear</b><br>Test class: fcaa.testCase.instruments<br/>
+<a href="#Output-1980418639" onClick='toggleBox("Output-1980418639", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1980418639" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1980418639">
+Starting test: verifyPublishedDateRangeClear<br/>
+Finished test: verifyPublishedDateRangeClear<br/>
+</div>
+</td>
+<td></td>
+<td>6</td>
+<td>fcaa.testCase.instruments@327514f</td></tr>
+<tr>
+<td title='fcaa.testCase.level3materials.verifyNextPageNumber()'><b>verifyNextPageNumber</b><br>Test class: fcaa.testCase.level3materials<br/>
+<a href="#Output-1397967893" onClick='toggleBox("Output-1397967893", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1397967893" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1397967893">
+Starting test: verifyNextPageNumber<br/>
+Finished test: verifyNextPageNumber<br/>
+</div>
+</td>
+<td></td>
+<td>11</td>
+<td>fcaa.testCase.level3materials@4c402120</td></tr>
+<tr>
+<td title='fcaa.testCase.latestNews.testMonthRadio()'><b>testMonthRadio</b><br>Test class: fcaa.testCase.latestNews<br/>
+<a href="#Output-1964117592" onClick='toggleBox("Output-1964117592", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1964117592" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1964117592">
+Starting test: testMonthRadio<br/>
+Finished test: testMonthRadio<br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>fcaa.testCase.latestNews@47eaca72</td></tr>
+<tr>
+<td title='fcaa.testCase.level3materials.verifyLastPageNumber()'><b>verifyLastPageNumber</b><br>Test class: fcaa.testCase.level3materials<br/>
+<a href="#Output-1356532503" onClick='toggleBox("Output-1356532503", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1356532503" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1356532503">
+Starting test: verifyLastPageNumber<br/>
+Finished test: verifyLastPageNumber<br/>
+</div>
+</td>
+<td></td>
+<td>16</td>
+<td>fcaa.testCase.level3materials@4c402120</td></tr>
+<tr>
+<td title='fcaa.testCase.latestNews.verifyTotalCount()'><b>verifyTotalCount</b><br>Test class: fcaa.testCase.latestNews<br/>
+<a href="#Output-1843324431" onClick='toggleBox("Output-1843324431", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1843324431" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1843324431">
+Starting test: verifyTotalCount<br/>
+Finished test: verifyTotalCount<br/>
+</div>
+</td>
+<td></td>
+<td>7</td>
+<td>fcaa.testCase.latestNews@47eaca72</td></tr>
+<tr>
+<td title='fcaa.testCase.latestNews.verifyRadioButtonUnselect()'><b>verifyRadioButtonUnselect</b><br>Test class: fcaa.testCase.latestNews<br/>
+<a href="#Output-1759522611" onClick='toggleBox("Output-1759522611", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1759522611" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1759522611">
+Starting test: verifyRadioButtonUnselect<br/>
+Finished test: verifyRadioButtonUnselect<br/>
 </div>
 </td>
 <td></td>
 <td>1</td>
-<td>fcaa.testCase.latestNews@6f1de4c7</td></tr>
+<td>fcaa.testCase.latestNews@47eaca72</td></tr>
+<tr>
+<td title='fcaa.testCase.latestNews.verifyNextPageNumber()'><b>verifyNextPageNumber</b><br>Test class: fcaa.testCase.latestNews<br/>
+<a href="#Output-733623791" onClick='toggleBox("Output-733623791", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-733623791" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-733623791">
+Starting test: verifyNextPageNumber<br/>
+Next Page button is disabled<br/>
+Finished test: verifyNextPageNumber<br/>
+</div>
+</td>
+<td></td>
+<td>8</td>
+<td>fcaa.testCase.latestNews@47eaca72</td></tr>
+<tr>
+<td title='fcaa.testCase.instruments.testEffectivedateRange()'><b>testEffectivedateRange</b><br>Test class: fcaa.testCase.instruments<br/>
+<a href="#Output-1471915246" onClick='toggleBox("Output-1471915246", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1471915246" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1471915246">
+Starting test: testEffectivedateRange<br/>
+Finished test: testEffectivedateRange<br/>
+</div>
+</td>
+<td></td>
+<td>1</td>
+<td>fcaa.testCase.instruments@327514f</td></tr>
+<tr>
+<td title='fcaa.testCase.instruments.verifyFirstPageNumber()'><b>verifyFirstPageNumber</b><br>Test class: fcaa.testCase.instruments<br/>
+<a href="#Output-1011286303" onClick='toggleBox("Output-1011286303", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1011286303" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1011286303">
+Starting test: verifyFirstPageNumber<br/>
+Finished test: verifyFirstPageNumber<br/>
+</div>
+</td>
+<td></td>
+<td>19</td>
+<td>fcaa.testCase.instruments@327514f</td></tr>
+<tr>
+<td title='fcaa.testCase.instruments.verifyEffectiveDateRangeClear()'><b>verifyEffectiveDateRangeClear</b><br>Test class: fcaa.testCase.instruments<br/>
+<a href="#Output-1379527651" onClick='toggleBox("Output-1379527651", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1379527651" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1379527651">
+Starting test: verifyEffectiveDateRangeClear<br/>
+Finished test: verifyEffectiveDateRangeClear<br/>
+</div>
+</td>
+<td></td>
+<td>1</td>
+<td>fcaa.testCase.instruments@327514f</td></tr>
+<tr>
+<td title='fcaa.testCase.instruments.testPublishedDateRadio()'><b>testPublishedDateRadio</b><br>Test class: fcaa.testCase.instruments<br/>
+<a href="#Output-1479566570" onClick='toggleBox("Output-1479566570", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1479566570" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1479566570">
+Starting test: testPublishedDateRadio<br/>
+Finished test: testPublishedDateRadio<br/>
+</div>
+</td>
+<td></td>
+<td>8</td>
+<td>fcaa.testCase.instruments@327514f</td></tr>
+<tr>
+<td title='fcaa.testCase.forms.verifyPreviousPageNumber()'><b>verifyPreviousPageNumber</b><br>Test class: fcaa.testCase.forms<br/>
+<a href="#Output-1515157777" onClick='toggleBox("Output-1515157777", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1515157777" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1515157777">
+Starting test: verifyPreviousPageNumber<br/>
+Finished test: verifyPreviousPageNumber<br/>
+</div>
+</td>
+<td></td>
+<td>19</td>
+<td>fcaa.testCase.forms@2d1ef81a</td></tr>
 <tr>
 <td title='fcaa.testCase.latestNews.verifyDataWithinDateRange()'><b>verifyDataWithinDateRange</b><br>Test class: fcaa.testCase.latestNews<br/>
-<a href="#Output-281896787" onClick='toggleBox("Output-281896787", this, "Show output", "Hide output");'>Show output</a>
+<a href="#Output-846072718" onClick='toggleBox("Output-846072718", this, "Show output", "Hide output");'>Show output</a>
 
-<a href="#Output-281896787" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-281896787">
+<a href="#Output-846072718" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-846072718">
 Starting test: verifyDataWithinDateRange<br/>
+Next Page button is disabled<br/>
 Finished test: verifyDataWithinDateRange<br/>
 </div>
 </td>
 <td></td>
-<td>1</td>
-<td>fcaa.testCase.latestNews@6f1de4c7</td></tr>
+<td>8</td>
+<td>fcaa.testCase.latestNews@47eaca72</td></tr>
 <tr>
-<td title='fcaa.testCase.forms.testsearchbox()'><b>testsearchbox</b><br>Test class: fcaa.testCase.forms<br/>
-<a href="#Output-1899640261" onClick='toggleBox("Output-1899640261", this, "Show output", "Hide output");'>Show output</a>
+<td title='fcaa.testCase.instruments.testsearchbox()'><b>testsearchbox</b><br>Test class: fcaa.testCase.instruments<br/>
+<a href="#Output-868606504" onClick='toggleBox("Output-868606504", this, "Show output", "Hide output");'>Show output</a>
 
-<a href="#Output-1899640261" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-1899640261">
+<a href="#Output-868606504" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-868606504">
 Starting test: testsearchbox<br/>
 Finished test: testsearchbox<br/>
 </div>
 </td>
 <td></td>
 <td>1</td>
-<td>fcaa.testCase.forms@22555ebf</td></tr>
+<td>fcaa.testCase.instruments@327514f</td></tr>
+<tr>
+<td title='fcaa.testCase.instruments.clickEffactiveDateRadioText()'><b>clickEffactiveDateRadioText</b><br>Test class: fcaa.testCase.instruments<br/>
+<a href="#Output-914927719" onClick='toggleBox("Output-914927719", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-914927719" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-914927719">
+Starting test: clickEffactiveDateRadioText<br/>
+Finished test: clickEffactiveDateRadioText<br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>fcaa.testCase.instruments@327514f</td></tr>
+<tr>
+<td title='fcaa.testCase.instruments.testEffectiveDateRadio()'><b>testEffectiveDateRadio</b><br>Test class: fcaa.testCase.instruments<br/>
+<a href="#Output-128367190" onClick='toggleBox("Output-128367190", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-128367190" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-128367190">
+Starting test: testEffectiveDateRadio<br/>
+Finished test: testEffectiveDateRadio<br/>
+</div>
+</td>
+<td></td>
+<td>1</td>
+<td>fcaa.testCase.instruments@327514f</td></tr>
+<tr>
+<td title='fcaa.testCase.latestNews.testsearchbox()'><b>testsearchbox</b><br>Test class: fcaa.testCase.latestNews<br/>
+<a href="#Output-980533504" onClick='toggleBox("Output-980533504", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-980533504" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-980533504">
+Starting test: testsearchbox<br/>
+Finished test: testsearchbox<br/>
+</div>
+</td>
+<td></td>
+<td>1</td>
+<td>fcaa.testCase.latestNews@47eaca72</td></tr>
+<tr>
+<td title='fcaa.testCase.level3materials.verifyPreviousPageNumber()'><b>verifyPreviousPageNumber</b><br>Test class: fcaa.testCase.level3materials<br/>
+<a href="#Output-1682402229" onClick='toggleBox("Output-1682402229", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1682402229" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1682402229">
+Starting test: verifyPreviousPageNumber<br/>
+Finished test: verifyPreviousPageNumber<br/>
+</div>
+</td>
+<td></td>
+<td>19</td>
+<td>fcaa.testCase.level3materials@4c402120</td></tr>
+<tr>
+<td title='fcaa.testCase.latestNews.testVerifyOpenPdfInNewTab()'><b>testVerifyOpenPdfInNewTab</b><br>Test class: fcaa.testCase.latestNews<br/>
+<a href="#Output-167670282" onClick='toggleBox("Output-167670282", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-167670282" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-167670282">
+Starting test: testVerifyOpenPdfInNewTab<br/>
+Finished test: testVerifyOpenPdfInNewTab<br/>
+</div>
+</td>
+<td></td>
+<td>3</td>
+<td>fcaa.testCase.latestNews@47eaca72</td></tr>
+<tr>
+<td title='fcaa.testCase.forms.verifyFirstPageNumber()'><b>verifyFirstPageNumber</b><br>Test class: fcaa.testCase.forms<br/>
+<a href="#Output-798653807" onClick='toggleBox("Output-798653807", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-798653807" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-798653807">
+Starting test: verifyFirstPageNumber<br/>
+Finished test: verifyFirstPageNumber<br/>
+</div>
+</td>
+<td></td>
+<td>19</td>
+<td>fcaa.testCase.forms@2d1ef81a</td></tr>
+<tr>
+<td title='fcaa.testCase.latestNews.verifyPreviousPageNumber()'><b>verifyPreviousPageNumber</b><br>Test class: fcaa.testCase.latestNews<br/>
+<a href="#Output-751628596" onClick='toggleBox("Output-751628596", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-751628596" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-751628596">
+Starting test: verifyPreviousPageNumber<br/>
+Next Page button is disabled<br/>
+Previous Page button is disabled<br/>
+Finished test: verifyPreviousPageNumber<br/>
+</div>
+</td>
+<td></td>
+<td>16</td>
+<td>fcaa.testCase.latestNews@47eaca72</td></tr>
+<tr>
+<td title='fcaa.testCase.level3materials.verifyFirstPageNumber()'><b>verifyFirstPageNumber</b><br>Test class: fcaa.testCase.level3materials<br/>
+<a href="#Output-1097456400" onClick='toggleBox("Output-1097456400", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1097456400" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1097456400">
+Starting test: verifyFirstPageNumber<br/>
+Finished test: verifyFirstPageNumber<br/>
+</div>
+</td>
+<td></td>
+<td>19</td>
+<td>fcaa.testCase.level3materials@4c402120</td></tr>
+<tr>
+<td title='fcaa.testCase.forms.verifyTotalCount()'><b>verifyTotalCount</b><br>Test class: fcaa.testCase.forms<br/>
+<a href="#Output-1628761455" onClick='toggleBox("Output-1628761455", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1628761455" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1628761455">
+Starting test: verifyTotalCount<br/>
+Finished test: verifyTotalCount<br/>
+</div>
+</td>
+<td></td>
+<td>36</td>
+<td>fcaa.testCase.forms@2d1ef81a</td></tr>
+<tr>
+<td title='fcaa.testCase.forms.testOldest()'><b>testOldest</b><br>Test class: fcaa.testCase.forms<br/>
+<a href="#Output-1128856117" onClick='toggleBox("Output-1128856117", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1128856117" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1128856117">
+Starting test: testOldest<br/>
+Next Page button is disabled<br/>
+Next Page button is disabled<br/>
+Finished test: testOldest<br/>
+</div>
+</td>
+<td></td>
+<td>92</td>
+<td>fcaa.testCase.forms@2d1ef81a</td></tr>
 </table><p>
 </body>
 </html>

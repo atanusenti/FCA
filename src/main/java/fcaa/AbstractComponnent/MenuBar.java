@@ -6,7 +6,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import fcaa.pageObject.Forms;
+import fcaa.pageObject.Instruments;
 import fcaa.pageObject.LatestNews;
+import fcaa.pageObject.Level3Materials;
 
 public class MenuBar extends Utility{
 	
@@ -81,9 +83,11 @@ public void goToGlossary() {
 }
 
 
-public void goToInstruments() {
+public Instruments goToInstruments() {
 	
 	instruments.click();
+	Instruments instruments = new Instruments(driver);
+	return instruments;
 }
 
 public Forms goToForms() {
@@ -98,9 +102,11 @@ public void goToTechnicalStandards() {
 	technicalStandards.click();
 }
 
-public void goToLevel3Materials() {
+public Level3Materials goToLevel3Materials() {
 	
 	level3Materials.click();
+	Level3Materials level3Materials = new Level3Materials(driver);
+	return level3Materials;
 }
 
 public void goToPolicandGuidance() {

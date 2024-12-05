@@ -1,6 +1,7 @@
 package fcaa.testCase;
 
 import java.text.ParseException;
+import java.util.Collections;
 import java.util.List;
 
 import org.testng.Assert;
@@ -27,11 +28,30 @@ public class latestNews extends BaseClass {
 		latestNews = menuBar.goToLatestNews();
 	}
 
+	// <--------------Test cases for the latest News Home page---------------->
+
 	// Verify Search functionality
 	@Test(priority = 1)
 	public void testsearchbox() throws InterruptedException {
 		String searchPlaceHolder = latestNews.getSearchLatestNews();
 		Assert.assertTrue(searchPlaceHolder.equalsIgnoreCase("Search Latest News"));
+	}
+
+	// --------------Sorting Functionality--------------//
+
+	// Verify Newest functionality
+	@Test(priority = 3)
+	public void testNewest() throws InterruptedException, ParseException {
+		latestNews.clickOnSort();
+		latestNews.selectOldest();
+		List<String> dateBeforeSort = latestNews.getDateList();
+		latestNews.clickOnSort();
+		latestNews.selectNewest();
+		List<String> dateAfterSort = latestNews.getDateList();
+		latestNews.ascendingDates(dateAfterSort);
+		Assert.assertEquals(dateAfterSort, dateBeforeSort);
+//			System.out.println(dateAfterSort);
+//			System.out.println(dateAfterSort);
 	}
 
 	// Verify Oldest functionality
@@ -47,48 +67,127 @@ public class latestNews extends BaseClass {
 		System.out.println(dateAfterSort);
 	}
 
-	// Verify Newest functionality
-	@Test(priority = 3)
-	public void testNewest() throws InterruptedException, ParseException {
+	// Verify Title Ascending
+	@Test(priority = 5)
+	public void testTitleAscending() throws InterruptedException {
 		latestNews.clickOnSort();
-		latestNews.selectOldest();
-		List<String> dateBeforeSort = latestNews.getDateList();
+		latestNews.selectDescending();
+		List<String> itemsInDescendingOrder = latestNews.getTitleList();
 		latestNews.clickOnSort();
-		latestNews.selectNewest();
-		List<String> dateAfterSort = latestNews.getDateList();
-		latestNews.ascendingDates(dateAfterSort);
-		Assert.assertEquals(dateAfterSort, dateBeforeSort);
-//		System.out.println(dateAfterSort);
-//		System.out.println(dateAfterSort);
+		latestNews.selectAscending();
+		List<String> itemsInAscendingOrder = latestNews.getTitleList();
+		System.out.println(itemsInAscendingOrder);
+		Collections.reverse(itemsInDescendingOrder);
+		System.out.println(itemsInDescendingOrder);
+		// Now compare the reversed list with the ascending order list
+		Assert.assertTrue(itemsInAscendingOrder.equals(itemsInDescendingOrder));
+
 	}
 
 	// Verify Title descending
 	@Test(priority = 4)
 	public void testTitleDescending() throws InterruptedException {
-		List<String> titleBeforeSort = latestNews.getTitleList();
 		latestNews.clickOnSort();
-		latestNews.selectdescending();
-		List<String> titleAfterSort = latestNews.getTitleList();
-		latestNews.ascendingTitle(titleAfterSort);
-		Assert.assertEquals(titleBeforeSort, titleAfterSort);
-		System.out.println(titleBeforeSort);
-		System.out.println(titleAfterSort);
+		latestNews.selectAscending();
+		List<String> itemsInAscendingOrder = latestNews.getTitleList();
+		latestNews.clickOnSort();
+		latestNews.selectDescending();
+		List<String> itemsInDescendingOrder = latestNews.getTitleList();
+		Collections.reverse(itemsInDescendingOrder);
+		Assert.assertTrue(itemsInAscendingOrder.equals(itemsInDescendingOrder));
 	}
 
-	// Verify Title Ascending
-	@Test(priority = 5)
-	public void testTitleAscending() throws InterruptedException {
-		latestNews.clickOnSort();
-		latestNews.selectdescending();
-		List<String> titleBeforeSort = latestNews.getTitleList();
-		latestNews.clickOnSort();
-		latestNews.selectascending();
-		List<String> titleAfterSort = latestNews.getTitleList();
-		latestNews.descendingTitle(titleAfterSort);
-		Assert.assertEquals(titleBeforeSort, titleAfterSort);
-//	    System.out.println(titleBeforeSort);
-//	    System.out.println(titleAfterSort);
+	// -------------Display Count----------------//
+
+	// Assert that the counted total matches the displayed total
+	@Test(priority = 12)
+	public void verifyTotalCount() throws InterruptedException {
+		int[] count = latestNews.verifyDataCount();
+		int totalCount = count[0];
+		int displayedCount = count[1];
+		Assert.assertEquals(totalCount, displayedCount, "Total data count does not match the displayed count!");
 	}
+
+	// ---------------Pagination Functionality-------------//
+
+	// Test First Page Button
+	@Test(priority = 16)
+	private void verifyFirstPageNumber() throws InterruptedException {
+		int[] paginationPageNum = latestNews.checkFirstPageBtn();
+		String expectedPageNumber = "1";
+		if (paginationPageNum.length > 0) {
+			Assert.assertEquals(paginationPageNum[0], expectedPageNumber,
+					"First page number is not displayed correctly");
+		}
+	}
+
+	// Test Previous Page Button
+	@Test(priority = 17)
+	private void verifyPreviousPageNumber() throws InterruptedException {
+		int[] paginationPageNum = latestNews.checkPreviousPageBtn();
+		String expectedPageNumber = "1";
+		if (paginationPageNum.length > 0) {
+			Assert.assertEquals(paginationPageNum[0], expectedPageNumber,
+					"Previous page number is not displayed correctly");
+		}
+	}
+
+	// Test Next Page Button
+	@Test(priority = 18)
+	private void verifyNextPageNumber() throws InterruptedException {
+		int[] paginationPageNum = latestNews.checkNextPageBtn();
+		String expectedPageNumber = "2";
+		if (paginationPageNum.length > 0) {
+			Assert.assertEquals(paginationPageNum[0], expectedPageNumber,
+					"Next page number is not displayed correctly");
+		}
+	}
+
+	// Test Last Page Button
+	@Test(priority = 19)
+	private void verifyLastPageNumber() throws InterruptedException {
+		int[] paginationPageNum = latestNews.checkLastPageBtn();
+		if (paginationPageNum.length > 0) {
+			int expectedPageNumber = paginationPageNum[0];
+			Assert.assertEquals(paginationPageNum[0], expectedPageNumber,
+					"Next page number is not displayed correctly");
+		}
+
+	}
+
+	// <---------------Test New Tab Text--------------->
+
+	// Test Title Open in the New Tab and Validate New Tab Text
+	@Test(priority = 13)
+	public void verifyLinkText() throws InterruptedException {
+		String actuualText = latestNews.getLinkText();
+		String ExpectedText = latestNews.LinkVerification();
+		Assert.assertEquals(actuualText, ExpectedText, "The title does not match the expected value!");
+	}
+
+	// <---------------Test Go Back Button--------------->
+
+	// Test Go Back button working Properly
+	@Test(priority = 14)
+	public void verifygoBack() throws InterruptedException {
+		String[] urls = latestNews.verifyGoBackBtn();
+		String oldUrl = urls[0];
+		String currentUrl = urls[1];
+		Assert.assertNotEquals("The current URL does not match the expected URL.", oldUrl, currentUrl);
+	}
+
+	// <---------------Test PDF file Open--------------->
+
+	// Test Pdf file open in the new Tab
+	@Test(priority = 15)
+	public void testVerifyOpenPdfInNewTab() throws InterruptedException {
+		boolean isPdfOpened = latestNews.verifyOpenPdfInNewTab();
+		Assert.assertTrue(isPdfOpened);
+	}
+
+	// <------------------ Test cases for the left side menu -------------------->
+	
+	//<-----------Published Date----------->
 
 	// Verify radio button
 	@Test(priority = 6)
@@ -124,83 +223,5 @@ public class latestNews extends BaseClass {
 	public void verifyDateRangeClear() throws ParseException, InterruptedException {
 		boolean isDateRangeCleared = latestNews.verifyDateRangeFieldCleared(startDateStr, endDateStr);
 		Assert.assertTrue(isDateRangeCleared, "Start and End date should be cleared");
-	}
-
-	// Assert that the counted total matches the displayed total
-	@Test(priority = 12)
-	public void verifyTotalCount() throws InterruptedException {
-		int[] count = latestNews.verifyDataCount();
-		int totalCount = count[0];
-		int displayedCount = count[1];
-		Assert.assertEquals(totalCount, displayedCount, "Total data count does not match the displayed count!");
-	}
-
-	// Test Title Open in the New Tab and Validate New Tab Text
-	@Test(priority = 13)
-	public void verifyLinkText() throws InterruptedException {
-		String actuualText = latestNews.getLinkText();
-		String ExpectedText = latestNews.LinkVerification();
-		Assert.assertEquals(actuualText, ExpectedText, "The title does not match the expected value!");
-	}
-
-	//Test Go Back button working Properly
-	@Test(priority = 14)
-	public void verifygoBack() throws InterruptedException {
-		String[] urls = latestNews.verifyGoBackBtn();
-		String oldUrl = urls[0];
-		String currentUrl = urls[1];
-		Assert.assertNotEquals("The current URL does not match the expected URL.", oldUrl, currentUrl);
-	}
-
-	//Test Pdf file open in the new Tab
-	@Test(priority = 15)
-	public void testVerifyOpenPdfInNewTab() throws InterruptedException {
-		boolean isPdfOpened = latestNews.verifyOpenPdfInNewTab();
-		Assert.assertTrue(isPdfOpened);
-	}
-
-	//Test First Page Button
-	@Test(priority = 16)
-	private void verifyFirstPageNumber() throws InterruptedException {
-		int[] paginationPageNum = latestNews.checkFirstPageBtn();
-		String expectedPageNumber = "1";
-		if (paginationPageNum.length > 0) {
-			Assert.assertEquals(paginationPageNum[0], expectedPageNumber,
-					"First page number is not displayed correctly");
-		}
-	}
-
-	//Test Previous Page Button
-	@Test(priority = 17)
-	private void verifyPreviousPageNumber() throws InterruptedException {
-		int[] paginationPageNum = latestNews.checkPreviousPageBtn();
-		String expectedPageNumber = "1";
-		if (paginationPageNum.length > 0) {
-			Assert.assertEquals(paginationPageNum[0], expectedPageNumber,
-					"Previous page number is not displayed correctly");
-		}
-	}
-
-	//Test Next Page Button
-	@Test(priority = 18)
-	private void verifyNextPageNumber() throws InterruptedException {
-		int[] paginationPageNum = latestNews.checkNextPageBtn();
-		String expectedPageNumber = "2";
-		if (paginationPageNum.length > 0) {
-			Assert.assertEquals(paginationPageNum[0], expectedPageNumber,
-					"Next page number is not displayed correctly");
-		}
-	}
-
-	//Test Last Page Button
-	@Test(priority = 19)
-	private void verifyLastPageNumber() throws InterruptedException {
-		int[] paginationPageNum = latestNews.checkLastPageBtn();
-		if (paginationPageNum.length > 0) {
-			int expectedPageNumber = paginationPageNum[0];
-			Assert.assertEquals(paginationPageNum[0], expectedPageNumber,
-					"Next page number is not displayed correctly");
-		}
-
 	}
 }
