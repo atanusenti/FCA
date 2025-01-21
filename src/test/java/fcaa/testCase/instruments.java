@@ -238,8 +238,7 @@ public class instruments extends BaseClass {
 		instruments.selectSubmit();
 	}
 
-	// Verify Published Date radio button unselect functionality after input date
-	// range
+	// Verify Published Date radio button unselect functionality after input date range
 	@Test(priority = 18)
 	public void verifyPublishedDateRadioButtonUnselect() throws ParseException, InterruptedException {
 		instruments.selectPublishedDateRadio();
@@ -268,8 +267,10 @@ public class instruments extends BaseClass {
 
 	// Verify Filter By module
 	@Test
-	public void verifyFilterByModule() {
+	public void verifyFilterByModule() throws InterruptedException {
 		instruments.selectFilterByModuleSearchResult();
+		instruments.selectSubmit();
+		Thread.sleep(7000);
 	}
 
 }

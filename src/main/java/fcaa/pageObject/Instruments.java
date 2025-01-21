@@ -32,7 +32,7 @@ public class Instruments extends MenuBar {
 	}
 
 	// ----------------Published Date List To Verify Sorting ---------------//
-	
+
 	// capture the Published Date date List
 	@FindBy(xpath = "//div[contains(@class, 'listing')]//li[b[normalize-space()='Published Date:']]")
 	List<WebElement> PublishedDate;
@@ -312,7 +312,7 @@ public class Instruments extends MenuBar {
 	@FindBy(xpath = "//input[@id='instrumentFilterbyModule']")
 	WebElement filterByModule;
 
-	@FindBy(xpath = "//div[contains(@class,'p-autocomplete-panel p-component p-ripple-disabled ng-tns-c3756965041-6')]//ul[contains(@aria-label,'Option List')]")
+	@FindBy(xpath = "//div[contains(@class,'p-autocomplete-panel p-component p-ripple-disabled')]//ul[contains(@aria-label,'Option List')]/li")
 	List<WebElement> selectOptionFromFilterByModule;
 
 	// Select option From Filter By Module
@@ -352,6 +352,16 @@ public class Instruments extends MenuBar {
 	// Get Title with Sourcebook
 	public List<String> getTitleListWithSourceBook() throws InterruptedException {
 		return titleList(selectTitleWithSourceBook);
+	}
+
+	// ---------Title List With SourceBook to Verify Filter By Module---------//
+	// Capture Title
+	@FindBy(xpath = "//a[@class='link_color sm:text-lg text-base font-semibold cursor-pointer']")
+	List<WebElement> TitleWithSourceBook;
+
+	// Get Title List
+	public List<String> getTitleWithSourceBookList() throws InterruptedException {
+		return titleList(TitleWithSourceBook);
 	}
 
 	// --------------------------------------------//

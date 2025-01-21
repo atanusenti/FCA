@@ -87,10 +87,19 @@ public class Utility {
 	}
 
 	// Helper method to wait for an element to be clickable
-	private WebElement waitForElementToBeClickable(By locator) {
+	private WebElement waitForLocatorToBeClickable(By locator) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // Timeout duration set to 10 seconds
 		return wait.until(ExpectedConditions.elementToBeClickable(locator));
 	}
+	
+	// Helper method to wait for an element to be clickable
+		private void waitForElementToBeClickable(WebElement element) {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // Timeout duration set to 10 seconds
+			
+			if(!element.isDisplayed()) {
+				wait.until(ExpectedConditions.elementToBeClickable(element));	
+			}
+		}
 
 	// Helper method to wait for an element to be visible
 	private WebElement waitForElementToBeVisible(By locator) {
@@ -130,6 +139,7 @@ public class Utility {
 
 	public List<String> getDate(List<WebElement> element) throws InterruptedException {
 		List<String> dateList = new ArrayList<>();
+		
 		changeSortingValues();
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
@@ -327,7 +337,7 @@ public class Utility {
 	public void changeSortingValues() {
 		try {
 			// Wait for the dropdown to be clickable
-			WebElement sortDropdown = waitForElementToBeClickable(By
+			WebElement sortDropdown = waitForLocatorToBeClickable(By
 					.xpath("//div[contains(@class,'paginator_wrap')]//div[contains(@aria-label,'dropdown trigger')]"));
 
 			// Scroll to the dropdown if necessary

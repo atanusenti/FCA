@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import fcaa.pageObject.Forms;
+import fcaa.pageObject.Glossary;
 import fcaa.pageObject.Instruments;
 import fcaa.pageObject.LatestNews;
 import fcaa.pageObject.Level3Materials;
@@ -77,9 +78,11 @@ public LatestNews goToLatestNews() {
 	return latestNews;
 }
 
-public void goToGlossary() {
+public Glossary goToGlossary() {
 	
 	glossary.click();
+	Glossary glossary = new Glossary(driver);
+	return glossary;
 }
 
 

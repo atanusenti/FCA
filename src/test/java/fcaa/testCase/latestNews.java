@@ -40,7 +40,7 @@ public class latestNews extends BaseClass {
 	// --------------Sorting Functionality--------------//
 
 	// Verify Newest functionality
-	@Test(priority = 3)
+	@Test(priority = 2)
 	public void testNewest() throws InterruptedException, ParseException {
 		latestNews.clickOnSort();
 		latestNews.selectOldest();
@@ -55,7 +55,7 @@ public class latestNews extends BaseClass {
 	}
 
 	// Verify Oldest functionality
-	@Test(priority = 2)
+	@Test(priority = 3)
 	public void testOldest() throws InterruptedException {
 		List<String> dateBeforeSort = latestNews.getDateList();
 		latestNews.clickOnSort();
@@ -63,12 +63,12 @@ public class latestNews extends BaseClass {
 		List<String> dateAfterSort = latestNews.getDateList();
 		latestNews.decendingDates(dateAfterSort);
 		Assert.assertEquals(dateAfterSort, dateBeforeSort);
-		System.out.println(dateBeforeSort);
-		System.out.println(dateAfterSort);
+		//System.out.println(dateBeforeSort);
+		//System.out.println(dateAfterSort);
 	}
 
 	// Verify Title Ascending
-	@Test(priority = 5)
+	@Test(priority = 4)
 	public void testTitleAscending() throws InterruptedException {
 		latestNews.clickOnSort();
 		latestNews.selectDescending();
@@ -76,16 +76,16 @@ public class latestNews extends BaseClass {
 		latestNews.clickOnSort();
 		latestNews.selectAscending();
 		List<String> itemsInAscendingOrder = latestNews.getTitleList();
-		System.out.println(itemsInAscendingOrder);
+		//System.out.println(itemsInAscendingOrder);
 		Collections.reverse(itemsInDescendingOrder);
-		System.out.println(itemsInDescendingOrder);
+		//System.out.println(itemsInDescendingOrder);
 		// Now compare the reversed list with the ascending order list
 		Assert.assertTrue(itemsInAscendingOrder.equals(itemsInDescendingOrder));
 
 	}
 
 	// Verify Title descending
-	@Test(priority = 4)
+	@Test(priority = 5)
 	public void testTitleDescending() throws InterruptedException {
 		latestNews.clickOnSort();
 		latestNews.selectAscending();
@@ -100,7 +100,7 @@ public class latestNews extends BaseClass {
 	// -------------Display Count----------------//
 
 	// Assert that the counted total matches the displayed total
-	@Test(priority = 12)
+	@Test(priority = 6)
 	public void verifyTotalCount() throws InterruptedException {
 		int[] count = latestNews.verifyDataCount();
 		int totalCount = count[0];
@@ -111,7 +111,7 @@ public class latestNews extends BaseClass {
 	// ---------------Pagination Functionality-------------//
 
 	// Test First Page Button
-	@Test(priority = 16)
+	@Test(priority = 7)
 	private void verifyFirstPageNumber() throws InterruptedException {
 		int[] paginationPageNum = latestNews.checkFirstPageBtn();
 		String expectedPageNumber = "1";
@@ -122,7 +122,7 @@ public class latestNews extends BaseClass {
 	}
 
 	// Test Previous Page Button
-	@Test(priority = 17)
+	@Test(priority = 8)
 	private void verifyPreviousPageNumber() throws InterruptedException {
 		int[] paginationPageNum = latestNews.checkPreviousPageBtn();
 		String expectedPageNumber = "1";
@@ -133,7 +133,7 @@ public class latestNews extends BaseClass {
 	}
 
 	// Test Next Page Button
-	@Test(priority = 18)
+	@Test(priority = 9)
 	private void verifyNextPageNumber() throws InterruptedException {
 		int[] paginationPageNum = latestNews.checkNextPageBtn();
 		String expectedPageNumber = "2";
@@ -144,7 +144,7 @@ public class latestNews extends BaseClass {
 	}
 
 	// Test Last Page Button
-	@Test(priority = 19)
+	@Test(priority = 10)
 	private void verifyLastPageNumber() throws InterruptedException {
 		int[] paginationPageNum = latestNews.checkLastPageBtn();
 		if (paginationPageNum.length > 0) {
@@ -158,7 +158,7 @@ public class latestNews extends BaseClass {
 	// <---------------Test New Tab Text--------------->
 
 	// Test Title Open in the New Tab and Validate New Tab Text
-	@Test(priority = 13)
+	@Test(priority = 11)
 	public void verifyLinkText() throws InterruptedException {
 		String actuualText = latestNews.getLinkText();
 		String ExpectedText = latestNews.LinkVerification();
@@ -168,7 +168,7 @@ public class latestNews extends BaseClass {
 	// <---------------Test Go Back Button--------------->
 
 	// Test Go Back button working Properly
-	@Test(priority = 14)
+	@Test(priority = 12)
 	public void verifygoBack() throws InterruptedException {
 		String[] urls = latestNews.verifyGoBackBtn();
 		String oldUrl = urls[0];
@@ -179,7 +179,7 @@ public class latestNews extends BaseClass {
 	// <---------------Test PDF file Open--------------->
 
 	// Test Pdf file open in the new Tab
-	@Test(priority = 15)
+	@Test(priority = 13)
 	public void testVerifyOpenPdfInNewTab() throws InterruptedException {
 		boolean isPdfOpened = latestNews.verifyOpenPdfInNewTab();
 		Assert.assertTrue(isPdfOpened);
@@ -190,28 +190,28 @@ public class latestNews extends BaseClass {
 	//<-----------Published Date----------->
 
 	// Verify radio button
-	@Test(priority = 6)
+	@Test(priority = 14)
 	public void testMonthRadio() throws InterruptedException {
 		latestNews.selectMonthRadio();
 		latestNews.selectSubmit();
 	}
 
 	// Verify date range
-	@Test(priority = 8)
+	@Test(priority = 15)
 	public void testdateRange() throws ParseException, InterruptedException {
 		latestNews.inputDateRange(startDateStr, endDateStr);
 		latestNews.selectSubmit();
 	}
 
 	// Verify data is showing within the given date Range
-	@Test(priority = 9)
+	@Test(priority = 16)
 	public void verifyDataWithinDateRange() throws ParseException, InterruptedException {
 		boolean allDatesInRange = latestNews.verifyDataWithinDateRange(startDateStr, endDateStr);
 		Assert.assertTrue(allDatesInRange, "Not all displayed dates are within the specified range.");
 	}
 
 	// Verify radio button unselect functionality after input date range
-	@Test(priority = 10)
+	@Test(priority = 17)
 	public void verifyRadioButtonUnselect() throws ParseException, InterruptedException {
 		latestNews.selectMonthRadio();
 		boolean isRadioButtonSelected = latestNews.verifyRadiobuttonSelected(startDateStr, endDateStr);
@@ -219,7 +219,7 @@ public class latestNews extends BaseClass {
 	}
 
 	// Verify date range field must be clear after select radio button
-	@Test(priority = 11)
+	@Test(priority = 18)
 	public void verifyDateRangeClear() throws ParseException, InterruptedException {
 		boolean isDateRangeCleared = latestNews.verifyDateRangeFieldCleared(startDateStr, endDateStr);
 		Assert.assertTrue(isDateRangeCleared, "Start and End date should be cleared");

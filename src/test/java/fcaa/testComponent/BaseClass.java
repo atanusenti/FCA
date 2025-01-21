@@ -47,7 +47,7 @@ public class BaseClass {
 	public void LaunchApplication() throws IOException {
 		driver = initializeDriver();
 		HomePage = new HomePage(driver);
-		HomePage.goTo("https://fcahandbook.sentientgeeks.us/");
+		HomePage.goTo("https://uat-fcahandbook.finrege.com/");
 	}
 
 	@AfterMethod

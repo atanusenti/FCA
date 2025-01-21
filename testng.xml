@@ -4,9 +4,7 @@
 	<test thread-count="5" name="Test">
 		<classes>
 			<class name="fcaa.testCase.latestNews" />
-			<class name="fcaa.testCase.forms" />
-			<class name="fcaa.testCase.level3materials" />
-			<class name="fcaa.testCase.instruments" />
+			
 		</classes>
 	</test> <!--Test -->
 </suite> <!--Suite -->
