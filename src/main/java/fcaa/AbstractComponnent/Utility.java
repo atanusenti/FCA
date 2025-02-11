@@ -10,15 +10,12 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-<<<<<<< HEAD
-import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -26,8 +23,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
-
-import com.google.common.base.Supplier;
 
 public class Utility {
 
@@ -70,7 +65,6 @@ public class Utility {
 			if (!handle.equals(originalWindow)) {
 				// Switch to the new tab
 				driver.switchTo().window(handle);
-
 			}
 		}
 	}
@@ -152,7 +146,6 @@ public class Utility {
 		List<String> dateList = new ArrayList<>();
 
 		changeSortingValues(100);
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
 		while (!element.isEmpty()) {
 			// Collect the date texts from the current page

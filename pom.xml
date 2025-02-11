@@ -77,7 +77,6 @@
 			<version>2.20.0</version>
 		</dependency>
 
-<<<<<<< HEAD
 		<dependency>
 			<groupId>org.apache.pdfbox</groupId>
 			<artifactId>pdfbox</artifactId>
@@ -136,8 +135,6 @@
 			<artifactId>opencsv</artifactId>
 			<version>5.6</version>
 		</dependency>
-=======
->>>>>>> branch 'master' of https://github.com/atanusenti/FCA.git
 
 	</dependencies>
 
