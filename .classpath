@@ -32,8 +32,13 @@
 	</classpathentry>
 	<classpathentry excluding="**" kind="src" output="target/test-classes" path="src/test/resources">
 		<attributes>
+<<<<<<< HEAD
 			<attribute name="test" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
+=======
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="test" value="true"/>
+>>>>>>> branch 'master' of https://github.com/atanusenti/FCA.git
 			<attribute name="optional" value="true"/>
 		</attributes>
 	</classpathentry>

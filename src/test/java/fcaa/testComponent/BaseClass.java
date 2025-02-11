@@ -47,7 +47,11 @@ public class BaseClass {
 	public void LaunchApplication() throws IOException {
 		driver = initializeDriver();
 		HomePage = new HomePage(driver);
+<<<<<<< HEAD
 		HomePage.goTo(properties.getProperty("url"));
+=======
+		HomePage.goTo("https://uat-fcahandbook.finrege.com/");
+>>>>>>> branch 'master' of https://github.com/atanusenti/FCA.git
 	}
 
 	@AfterMethod

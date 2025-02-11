@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <testng-results ignored="1" total="2" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
@@ -31,6 +32,45 @@
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- fcaa.testCase.glossary -->
+=======
+<testng-results ignored="17" total="18" passed="1" failed="0" skipped="0">
+  <reporter-output>
+    <line>
+      <![CDATA[Starting test: verifygoBack]]>
+    </line>
+    <line>
+      <![CDATA[Finished test: verifygoBack]]>
+    </line>
+  </reporter-output>
+  <suite started-at="2025-01-17T19:14:02 IST" name="Default suite" finished-at="2025-01-17T19:14:08 IST" duration-ms="6678">
+    <groups>
+    </groups>
+    <test started-at="2025-01-17T19:14:02 IST" name="Default test" finished-at="2025-01-17T19:14:08 IST" duration-ms="6678">
+      <class name="fcaa.testCase.latestNews">
+        <test-method is-config="true" signature="LaunchApplication()[pri:0, instance:fcaa.testCase.latestNews@7cc0cdad]" started-at="2025-01-17T19:14:02 IST" name="LaunchApplication" finished-at="2025-01-17T19:14:06 IST" duration-ms="4194" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LaunchApplication -->
+        <test-method is-config="true" signature="setUpLatestNews()[pri:0, instance:fcaa.testCase.latestNews@7cc0cdad]" started-at="2025-01-17T19:14:06 IST" name="setUpLatestNews" finished-at="2025-01-17T19:14:07 IST" duration-ms="797" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpLatestNews -->
+        <test-method signature="verifygoBack()[pri:12, instance:fcaa.testCase.latestNews@7cc0cdad]" started-at="2025-01-17T19:14:07 IST" name="verifygoBack" finished-at="2025-01-17T19:14:08 IST" duration-ms="1418" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Starting test: verifygoBack]]>
+            </line>
+            <line>
+              <![CDATA[Finished test: verifygoBack]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- verifygoBack -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:fcaa.testCase.latestNews@7cc0cdad]" started-at="2025-01-17T19:14:08 IST" name="tearDown" finished-at="2025-01-17T19:14:08 IST" duration-ms="241" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- fcaa.testCase.latestNews -->
+>>>>>>> branch 'master' of https://github.com/atanusenti/FCA.git
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
