@@ -197,7 +197,6 @@ public class instruments extends BaseClass {
 		boolean isRadioButtonSelected = instruments.verifyEffectiveDateRadiobuttonSelected(startDateStr, endDateStr);
 		Assert.assertFalse(isRadioButtonSelected,
 				"Effective Date Radio button should be unselected after entering date range.");
-		// Thread.sleep(5000);
 	}
 
 	// Verify Effective date range field must be clear after select radio button
@@ -205,7 +204,6 @@ public class instruments extends BaseClass {
 	public void verifyEffectiveDateRangeClear() throws ParseException, InterruptedException {
 		boolean isDateRangeCleared = instruments.verifyEffectiveDateRangeFieldCleared(startDateStr, endDateStr);
 		Assert.assertTrue(isDateRangeCleared, "Effective Date Start and End date should be cleared");
-		// Thread.sleep(5000);
 	}
 
 	// Verify Effective Date Radio button select after click on the text
@@ -227,7 +225,7 @@ public class instruments extends BaseClass {
 	@Test(priority = 16)
 	public void testPublishedDateRadio() throws InterruptedException {
 		instruments.selectPublishedDateRadio();
-		Thread.sleep(8000);
+		Thread.sleep(3000);
 		instruments.selectSubmit();
 	}
 
@@ -245,7 +243,6 @@ public class instruments extends BaseClass {
 		boolean isRadioButtonSelected = instruments.verifyPublishedDateRadiobuttonSelected(startDateStr, endDateStr);
 		Assert.assertFalse(isRadioButtonSelected,
 				"Effective Date Radio button should be unselected after entering date range.");
-		Thread.sleep(5000);
 	}
 
 	// Verify Published date range field must be clear after select radio button
@@ -253,7 +250,6 @@ public class instruments extends BaseClass {
 	public void verifyPublishedDateRangeClear() throws ParseException, InterruptedException {
 		boolean isDateRangeCleared = instruments.verifyPublishedDateRangeFieldCleared(startDateStr, endDateStr);
 		Assert.assertTrue(isDateRangeCleared, "Effective Date Start and End date should be cleared");
-		Thread.sleep(5000);
 	}
 
 	// Verify Published Date data is showing within the given date Range
@@ -270,7 +266,6 @@ public class instruments extends BaseClass {
 	public void verifyFilterByModule() throws InterruptedException {
 		instruments.selectFilterByModuleSearchResult();
 		instruments.selectSubmit();
-		Thread.sleep(7000);
 	}
 
 }

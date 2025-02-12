@@ -12,15 +12,9 @@ public class HomePage extends MenuBar {
 		super(driver);
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
-		
-		
 	}
-	
 
 	public void goTo(String url) {
 		driver.get(url);
 	}
-	
-	
-
 }

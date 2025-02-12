@@ -24,7 +24,6 @@ public class Glossary extends MenuBar {
 	// -----------------Search Legal Instruments-------------------//
 
 	// Latest News Search functionality
-
 	@FindBy(xpath = "//input[@placeholder='Search Glossary']")
 	private WebElement searchBox;
 

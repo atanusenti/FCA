@@ -82,21 +82,17 @@ public class Forms extends MenuBar {
 	// ------------------- Test Pagination functionality-----------------//
 
 	// Test Pagination functionality
-
 	public int[] checkFirstPageBtn() throws InterruptedException {
-
 		int[] paginationPageNum = clickFirstPageButton();
 		return paginationPageNum;
 	}
 
 	public int[] checkPreviousPageBtn() throws InterruptedException {
-
 		int[] paginationPageNum = clickPreviousPageButton();
 		return paginationPageNum;
 	}
 
 	public int[] checkNextPageBtn() throws InterruptedException {
-
 		int[] paginationPageNum = clickNextPageButton();
 		return paginationPageNum;
 	}

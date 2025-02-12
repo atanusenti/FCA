@@ -95,9 +95,9 @@ public class Utility {
 	public void waitForElementToBeClickable(WebElement element) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // Timeout duration set to 10 seconds
 
-		if (!element.isDisplayed()) {
+//		if (!element.isDisplayed()) {
 			wait.until(ExpectedConditions.elementToBeClickable(element));
-		}
+//		}
 	}
 
 	// Helper method to wait for an element to be visible
@@ -110,6 +110,24 @@ public class Utility {
 	public WebElement waitForElementToBeVisible(WebElement element) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // Timeout duration set to 10 seconds
 		return wait.until(ExpectedConditions.visibilityOf(element));
+	}
+	
+	public void scrollIntoViewUsingJS(WebElement element) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].scrollIntoView();", element);
+	}
+	
+	public void scrollIntoViewUsingJSRetry(WebElement element) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		for (int i = 0; i < 3; i++) {  
+		    try {  
+	            js.executeScript("arguments[0].scrollIntoView({block: 'center'});", element);
+	            Thread.sleep(1000);  // Allow scroll to settle
+	            wait.until(ExpectedConditions.elementToBeClickable(element)).click();
+		    } catch (Exception e) {  
+//		        System.out.println("Retrying scrolling... Attempt " + (i + 1));  
+		    }  
+		}
 	}
 
 	// <-----------------WebElements For The Pagination------------->
@@ -150,8 +168,7 @@ public class Utility {
 		while (!element.isEmpty()) {
 			// Collect the date texts from the current page
 			dateList.addAll(element.stream().map(n -> n.getText().split(":")[1].trim()).collect(Collectors.toList()));
-			scrollToElement(nextPageButton);
-			Thread.sleep(3000);
+			scrollIntoViewUsingJS(nextPageButton);
 			if (nextPageButton.isEnabled() && nextPageButton.isDisplayed()) {
 				nextPageButton.click();
 			}
@@ -223,11 +240,7 @@ public class Utility {
 			titleList.addAll(elements.stream().map(WebElement::getText).collect(Collectors.toList()));
 
 			// Scroll to the next page button
-			scrollToElement(nextPageButton);
-			Thread.sleep(7000); // Waiting for the page to load
-
-			// Wait for the next page button to appear
-			waitForWebElementToAppear(nextPageButton);
+			scrollIntoViewUsingJS(nextPageButton);
 
 			// Check if the next page button is enabled and displayed, then click
 			if (nextPageButton.isEnabled() && nextPageButton.isDisplayed()) {
@@ -247,17 +260,14 @@ public class Utility {
 
 	// First Page button functionality
 	public int[] clickFirstPageButton() throws InterruptedException {
-		Thread.sleep(5000);
-		scrollToElement(firstPageButton);
-		Thread.sleep(3000);
+		scrollIntoViewUsingJSRetry(firstPageButton);
 		clickNextPageButton();
 		// Check if the "First Page" button is enabled
 		if (firstPageButton.isEnabled()) {
 			// Click the "First Page" button
-			scrollToElement(firstPageButton);
+			scrollIntoViewUsingJSRetry(firstPageButton);
 			firstPageButton.click();
 			// Convert the page number text to an integer array
-			// Thread.sleep(7000);
 			int[] paginationPageNum = { Integer.parseInt(pageNumber.getAttribute("aria-label")) };
 			return paginationPageNum;
 		} else {
@@ -268,14 +278,12 @@ public class Utility {
 
 	// Previous Page button functionality
 	public int[] clickPreviousPageButton() throws InterruptedException {
-		Thread.sleep(5000);
-		scrollToElement(firstPageButton);
-		Thread.sleep(3000);
+		scrollIntoViewUsingJSRetry(firstPageButton);
 		clickNextPageButton();
 
 		// Check if the "Previous Page" button is enabled
 		if (previousPageButton.isEnabled()) {
-			scrollToElement(firstPageButton);
+			scrollIntoViewUsingJSRetry(firstPageButton);
 			// Click the "Previous Page" button
 			previousPageButton.click();
 			// Convert the page number text to an integer array
@@ -290,14 +298,11 @@ public class Utility {
 
 	// Next Page button functionality
 	public int[] clickNextPageButton() throws InterruptedException {
-		Thread.sleep(5000);
-		scrollToElement(firstPageButton);
-		Thread.sleep(3000);
+		scrollIntoViewUsingJSRetry(firstPageButton);
 		// Check if the "Next Page" button is enabled
 		if (nextPageButton.isEnabled()) {
 			// Click the "Next Page" button
 			nextPageButton.click();
-			Thread.sleep(3000);
 			// Convert the page number text to an integer array
 			int[] paginationPageNum = { Integer.parseInt(pageNumber.getAttribute("aria-label")) };
 			return paginationPageNum;
@@ -310,8 +315,7 @@ public class Utility {
 
 	public boolean goToNextPageAndIsNextPageAvailable() throws InterruptedException {
 		if (nextPageButton.isDisplayed() && nextPageButton.isEnabled()) {
-			scrollToElement(nextPageButton);
-			Thread.sleep(1000);
+			scrollIntoViewUsingJSRetry(nextPageButton);
 			nextPageButton.click();
 			return true;
 		} else {
@@ -321,16 +325,12 @@ public class Utility {
 
 	// Last Page button functionality
 	public int[] clickLastPageButton() throws InterruptedException {
-		Thread.sleep(5000);
-		scrollToElement(firstPageButton);
-		Thread.sleep(3000);
+		scrollIntoViewUsingJSRetry(firstPageButton);
 		// Check if the "Last Page" button is enabled
 		if (lastPageButton.isEnabled()) {
 			// Click the "Last Page" button
 			lastPageButton.click();
-			Thread.sleep(5000);
-			scrollToElement(firstPageButton);
-			Thread.sleep(3000);
+			scrollIntoViewUsingJSRetry(firstPageButton);
 
 			// Check if the "Last Page" button is disabled after clicking
 			if (!lastPageButton.isEnabled()) {
@@ -354,9 +354,7 @@ public class Utility {
 				WebElement sortDropdown = waitForLocatorToBeClickable(By.xpath(
 						"//div[contains(@class,'paginator_wrap')]//div[contains(@aria-label,'dropdown trigger')]"));
 
-				scrollToElement(sortDropdown);
-				Thread.sleep(2000);
-				waitForElementToBeVisible(sortDropdown);
+				scrollIntoViewUsingJSRetry(sortDropdown);
 				sortDropdown.click();
 
 				WebElement sortOption = waitForLocatorToBeVisible(By.xpath("//li[@aria-label='" + sortValue + "']"));
@@ -403,6 +401,10 @@ public class Utility {
 		scrollToElement(clickOnSort);
 		clickOnSort.click();
 	}
+	
+//	public void waitForFirstElementClickable() {
+//		
+//	}
 
 	// Select Oldest from the sorting List
 	public void selectOldest() {

@@ -3,25 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-<<<<<<< HEAD
-      <class name="fcaa.testCase.glossary">
+      <class name="fcaa.testCase.instruments">
         <methods>
           <include name="tearDown"/>
-          <include name="testBooleanSearch"/>
-          <include name="setUpGlossary"/>
+          <include name="setUpInstru"/>
+          <include name="testPublishedDateRadio"/>
           <include name="LaunchApplication"/>
         </methods>
-      </class> <!-- fcaa.testCase.glossary -->
-=======
-      <class name="fcaa.testCase.latestNews">
-        <methods>
-          <include name="setUpLatestNews"/>
-          <include name="tearDown"/>
-          <include name="verifyNextPageNumber"/>
-          <include name="LaunchApplication"/>
-        </methods>
-      </class> <!-- fcaa.testCase.latestNews -->
->>>>>>> branch 'master' of https://github.com/atanusenti/FCA.git
+      </class> <!-- fcaa.testCase.instruments -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
