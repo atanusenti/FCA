@@ -563,9 +563,7 @@ public class Utility {
 			// Check for the next page button and navigate to it
 
 			try {
-				scrollToElement(nextPageButton);
-				Thread.sleep(3000);
-				waitForWebElementToAppear(nextPageButton);
+				scrollIntoViewUsingJSRetry(nextPageButton);
 				if (nextPageButton.isDisplayed() && nextPageButton.isEnabled()) {
 					nextPageButton.click();
 				} else {
@@ -576,7 +574,6 @@ public class Utility {
 			}
 		}
 		return new int[] { totalCount, displayedCount };
-
 	}
 
 }

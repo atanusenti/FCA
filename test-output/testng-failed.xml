@@ -3,14 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="fcaa.testCase.instruments">
+      <class name="fcaa.testCase.glossary">
         <methods>
           <include name="tearDown"/>
-          <include name="setUpInstru"/>
-          <include name="testPublishedDateRadio"/>
+          <include name="testBooleanSearch" invocation-numbers="0"/>
+          <include name="setUpGlossary"/>
           <include name="LaunchApplication"/>
         </methods>
-      </class> <!-- fcaa.testCase.instruments -->
+      </class> <!-- fcaa.testCase.glossary -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
