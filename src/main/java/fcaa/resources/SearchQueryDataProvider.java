@@ -7,112 +7,100 @@ public class SearchQueryDataProvider {
     public static Object[][] getSearchQueries() {
         return new Object[][]{
             // ----------------------AND/&&------------------------------
-//            {"market AND finance"},
-            // {"market && finance"}, 
+//             {"market AND finance"}, // pass for forms page
+             {"market && finance"}, // pass for forms page
             // {"market &&finance"}, // test case fails  
-            
             // ----------------------OR/||-------------------------------
-            // {"market OR finance"}, // test case fails at 341
-            // {"market finance"},
-            {"market || finance"},   
-            
+//             {"market OR finance"}, // broken file link found at 341 for forms page
+            // {"market finance"},  // broken file link found at 341 for forms page
+             {"market || finance"},  // broken file link found at 341 for forms page
             // ----------------------NOT/-/!-------------------------------
-            {"finance -market"},
-            // {"market NOT finance"}, 
-            // {"finance !order"},
-            
+             {"finance -market"}, // pass for forms page
+//             {"market NOT finance"}, // broken file link found at 63 for forms page
+//             {"finance !order"}, // pass for forms page
             // ----------------------Combination of AND/OR/NOT-------------------------------
-            // {"!finance -market AND orders"},
-            {"management || order && contract"}, // test case fails at 35
-            // {"management AND order OR contract"}, // test case fails at 35
-            // {"market NOT finance !order"},
-            // {"market NOT finance orders"},
-            // {"management || order NOT contract"},
-            // {"management AND order NOT contract"},
-            // {"management && order && contract"},
-            
+             {"!finance -market AND orders"}, // pass for forms page
+             {"management || order && contract"}, // broken file link found at 35 for forms page
+            // {"management AND order OR contract"}, // broken file link found at 35 for forms page
+//             {"market NOT finance !order"}, // broken file link found at 41 for forms page
+//             {"market NOT finance orders"}, // broken file link found at 81 for forms page
+//             {"management || order NOT contract"},  // broken file link found at 41 for forms page
+             {"management AND order NOT contract"}, // pass for forms page
+//             {"management && order && contract"}, // broken file link found at 35 for forms page
             // ----------------------Exact Operator-------------------------------
-            // {"\"finance\""},
-            {"\"finance transaction\""},
-            
+//             {"\"finance\""}, // pass for forms page
+             {"\"finance transaction\""}, // pass for forms page
             // ----------------------Proximity Operator-------------------------------
-            // {"maket~"},
-            // {"fninancee~"},
-            
+//             {"maket~"}, // broken file link found at 141 for forms page
+             {"fninancee~"}, // pass for forms page
             // ----------------------Proximity/?/* Operator-------------------------------
-            // {"finance*"},
-            // {"finan?e"},
-            
+             {"finance*"}, // pass for forms page
+             {"finan?ed"}, // pass for forms page
             // ----------------------Combination of AND/OR/NOT/()/Exact Operator-------------------------------
-            {"market NOT finance \"orders\""},
-            // {"market AND (finance OR contract)"},
-            // {"!finance -market AND transaction"},
-            // {"!(finance market) AND transaction"},
-            // {"finance !order -market"},
-            // {"\"finance transaction\" AND order"},
-            // {"market OR (finance !manage)"}, // test case fails
-            // {"market OR \"finance transaction\" -order"},
-            // {"(market finance) NOT abuse"},
-            // {"\"finance transaction\" -order"},
-            // {"\"finance transaction\" market"},
-            // {"(market AND finance) NOT contract"},
-            // {"(market OR finance) NOT contract"},
-            // {"(market OR finance) AND contract"},
-            // {"\"finance transaction\" NOT \"order\""},
-            // {"market \"finance transaction\" NOT \"order\""},
-            {"finance && \"finance transaction\" NOT \"order\""},
-            // {"(market OR finance) AND \"contract\""},
-            
+//             {"market NOT finance \"orders\""}, // broken file link found at 81 for forms page
+             {"market AND (finance OR contract)"}, // broken file link found at 197 for forms page
+//             {"!finance -market AND transaction"}, // pass for forms page
+//             {"!(finance market) AND transaction"}, // pass for forms page
+//             {"finance !order -market"}, // pass for forms page
+//             {"\"finance transaction\" AND order"}, // pass for forms page
+             {"market OR \"finance transaction\" -order"}, // broken file link found at 55 for forms page
+//             {"(market finance) NOT abuse"}, // broken file link found at 327 for forms page
+//             {"\"finance transaction\" -order"}, // pass for forms page
+//             {"\"finance transaction\" market"}, // broken file link found at 152 for forms page
+             {"(market AND finance) NOT contract"}, // pass for forms page
+//             {"(market OR finance) NOT contract"}, // broken file link found at 163 for forms page
+             {"(market OR finance) AND contract"}, // broken file link found at 169 for forms page
+//             {"\"finance transaction\" NOT \"order\""}, // pass for forms page
+//             {"market \"finance transaction\" NOT \"order\""},  // broken file link found at 55 for forms page
+             {"finance && \"finance transaction\" NOT \"order\""}, // pass for forms page
+//             {"(market OR finance) AND \"contract\""}, // broken file link found at 169 for forms page
             // ----------------------Combination of +/~/?/()/Exact/*/NOT Operator-------------------------------
-            // {"finan* -mark?t"},
-            // {"finance* AND marke*"},
-            // {"financ* OR marke*"},
-            {"(market AND finance) NOT contract*"},
-            // {"(market OR finance) NOT contract*"},
-            // {"(market AND finance) AND contract*"},
-            // {"financ? && marke*"},
-            // {"+finance +market"},
-            // {"-mark?t finan*"},
-            // {"-fninancee~ +mark?t"},
-            // {"fninan~ -mark?t +orders"},
-            // {"fninan~ -mark?t -order"},
-            // {"+ordre~ -orders"},
-            // {"+ordre~ AND \"orders\""}, // should highlight orders text as well
-            // {"market +finance -order"},
-            // {"market +finance"},
-            // {"-finance +market"},
-            // {"+finance -markt~"}, // test case fails
-            // {"fninance~ -order"},
-            
+//             {"finan* -mark?t"}, // broken file link found at 24 for forms page
+             {"finance* AND marke*"}, // pass for forms page
+//             {"financ* OR marke*"}, // broken file link found at 31 for forms page
+//             {"(market AND finance) NOT contract*"}, // pass for forms page
+             {"(market OR finance) NOT contract*"}, // pass for forms page
+             {"(market AND finance) AND contract*"}, // pass for forms page
+//             {"finance? && marke*"}, // pass for forms page
+//             {"+finance +markets"}, // pass for forms page
+//             {"-mark?t finan*"}, // broken file link found at 24 for forms page
+//             {"-fninancee~ +mark?t"}, // broken file link found at 54 for forms page
+//             {"fninan~ -mark?t +orders"}, // pass for forms page
+//             {"fninan~ -mark?t -order"}, // pass for forms page
+//             {"+ordre~ -orders"},// broken file link found at 12 for forms page
+//             {"+ordre~ AND \"orders\""}, // should highlight orders text as well //pass
+//             {"market +finance -order"}, // pass for forms page
+//             {"market +finance"}, // pass for forms page
+//             {"-finance +market"}, // broken file link found at 63 for forms page
+             {"+finance -markt~"}, // test case fails for both glossary and form page
+             {"fninance~ -order"}, // pass for forms page
             // ----------------------Some Other Combinations-------------------------------
-            // {"fninan~ -mark?t OR ordre~"},
-            // {"fninan~ mark?t NOT ordre~"},// test case fails
-            // {"-mark?t fninan~ AND ordree~"},
-            // {"fninan~ -mark?t +ordree~"},
-            // {"fninan~ AND order"},
-            // {"fninace~ OR mark?t -order"},
-            // {"fninan~ && ordr~"},
-            // {"marke~ && finan?e !*ment"},
-            // {"finance* AND \"market\""},
-            // {"(marke* || finance*) AND (contract* OR order*)"},
-            {"(marke* || finance*) AND (\"transaction\" OR \"services\") NOT (contract* OR order*)"},
-            {"(mar* OR fin*) AND (\"review status\" OR \"documents\") NOT (leg* OR acc*)"},
-            // {"fninance~ || order NOT manage"},
-            // {"market +finance || (order && management)"},
-            
+//             {"fninan~ -mark?t OR ordre~"}, // broken file link found at 12 for forms page
+//             {"fninan~ mark?t NOT ordre~"}, // test case fails for both glossary and form page
+             {"-mark?t fninan~ AND ordree~"}, // pass for forms page
+//             {"fninan~ -mark?t +ordree~"}, // broken file link found at 6 for forms page
+//             {"fninan~ AND order"}, // pass for forms page
+//             {"fninace~ OR mark?t -order"}, // broken file link found at 151 for forms page
+//             {"fninan~ && ordr~"}, // pass for forms page
+//             {"marke~ && finan?e !*ment"}, // pass for forms page
+//             {"finance* AND \"market\""}, // pass for forms page
+//             {"(marke* || finance*) AND (contract* OR order*)"}, // broken file link found at 201 for forms page
+             {"(marke* || finance*) AND (\"transaction\" OR \"services\") NOT (contract* OR order*)"}, // broken file link found at 26 for forms page
+             {"(mar* OR fin*) AND (\"review status\" OR \"documents\") NOT (leg* OR acc*)"}, // pass for forms page
+//             {"fninance~ || order NOT manage"}, // broken file link found at 83 for forms page
+//             {"market +finance || (order && management)"}, // pass for forms page
             // ------------------------------Proximity Fuzzy----------------------------------------
-            {"market \"finance abuse\"~5"},
-            // {"(market \"finance transaction\"~5) -order"},
-            // {"order && \"finance transaction\"~3"},
-            {"\"market order\"~5"},
-            // {"\"market system\"~2"},
-            
+//             {"market \"finance abuse\"~5"}, // broken file link found at 145 for forms page
+             {"(market \"finance transaction\"~5) -order"}, // broken file link found at 55 for forms page
+//             {"order && \"finance transaction\"~3"}, // pass for forms page
+             {"\"market order\"~5"}, // pass for forms page
+//             {"\"market system\"~2"}, // pass for forms page
             // ------------------------------Boost Operator----------------------------------------
-            {"market^2 finance"},
-            // {"market finance^2"},
-            // {"(market && abuse)^5 AND order"},
-            // {"market finance^2 NOT transaction"},
-            {"(market && abuse)^5 (finance && abuse)^2 abuse"},
+             {"market^2 finance"}, // broken file link found at 282 for forms page
+//             {"market finance^2"}, // broken file link found at 218 for forms page
+//             {"(market && abuse)^5 AND order"}, // pass for forms page
+//             {"market finance^2 NOT transaction"}, // broken file link found at 342 for forms page
+             {"(market && abuse)^5 (finance && abuse)^2 abuse"}, // pass for forms page
         };
     }
 }

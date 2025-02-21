@@ -1,51 +1,22 @@
 package fcaa.AbstractComponnent;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.Reader;
-import java.net.URI;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
 
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVParser;
-import org.apache.commons.csv.CSVRecord;
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.text.PDFTextStripper;
-import org.apache.poi.hwpf.HWPFDocument;
-import org.apache.poi.hwpf.extractor.WordExtractor;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
-import org.apache.poi.xwpf.usermodel.XWPFDocument;
-import org.apache.poi.xwpf.usermodel.XWPFParagraph;
-import org.apache.poi.xwpf.usermodel.XWPFTable;
-import org.apache.poi.xwpf.usermodel.XWPFTableRow;
-import org.apache.tika.Tika;
 import org.testng.Assert;
-
-import com.opencsv.exceptions.CsvException;
+import org.testng.Reporter;
 
 public class BooleanSearch {
-
-	public boolean evaluateQuery(String query, String text) {
+	static int dataPosition = 0;
+	public boolean evaluateQuery(String query, String text, final int actualPosition) {
+		dataPosition = actualPosition;
 		query = query.trim();
 
 		// Handle boosted terms (^)
 		if (query.contains("^")) {
-			return evaluateBoostedTerms(query, text);
+			return evaluateBoostedTerms(query, text, dataPosition);
 		}
 
 		// Handle parentheses (highest precedence)
@@ -73,7 +44,7 @@ public class BooleanSearch {
 
 		// Handle logical NOT (-, !)
 		if (query.contains("NOT ") || query.contains("-") || query.contains("!")) {
-			return evaluateLogicalNot(query, text);
+			return evaluateLogicalNot(query, text, dataPosition);
 		}
 
 		// Handle proximity terms (~)
@@ -93,7 +64,7 @@ public class BooleanSearch {
 
 		// Handle mandatory terms (+)
 		if (query.contains("+")) {
-			return evaluateMandatoryTerms(query, text);
+			return evaluateMandatoryTerms(query, text, dataPosition);
 		}
 
 		// Default: evaluate term or individual term matching
@@ -110,13 +81,13 @@ public class BooleanSearch {
 
 			// Evaluate the nested expression
 			String nestedQuery = query.substring(openIndex + 1, closeIndex).trim();
-			boolean nestedResult = evaluateQuery(nestedQuery, text);
+			boolean nestedResult = evaluateQuery(nestedQuery, text, dataPosition);
 			query = query.substring(0, openIndex) + (nestedResult ? "1" : "0") + query.substring(closeIndex + 1);
 		}
 		return query;
 	}
 
-	private boolean evaluateLogicalNot(String query, String text) {
+	private boolean evaluateLogicalNot(String query, String text, int dataPosition) {
 		String[] parts;
 
 		if (query.contains("NOT")) {
@@ -156,7 +127,9 @@ public class BooleanSearch {
 			// Handle negation terms (NOT, -, !)
 			if (part.startsWith("NOT ")) {
 				String term = part.substring(4).trim(); // Remove "NOT "
-				if (evaluateQuery(term, text)) {
+				if (evaluateQuery(term, text, dataPosition)) {
+					System.out.println(text);
+					Reporter.log("Error in Data present at : " + (dataPosition), true);
 					Assert.fail("Negation term is found in the search result");
 					return false; // Negation fails if the term is present
 				} else {
@@ -164,14 +137,16 @@ public class BooleanSearch {
 				}
 			} else if (part.startsWith("-") || part.startsWith("!")) {
 				String term = part.replaceFirst("^[-!]+", "").trim();
-				if (evaluateQuery(term, text)) {
+				if (evaluateQuery(term, text, dataPosition)) {
+					System.out.println(text);
+					Reporter.log("Error in Data present at : " + (dataPosition), true);
 					Assert.fail("Negation term is found in the search result");
 					return false; // Negation fails if the term is present
 				} else {
 					result = true;
 				}
 			} else {
-				boolean isPositiveTermFound = evaluateQuery(part, text);
+				boolean isPositiveTermFound = evaluateQuery(part, text, dataPosition);
 				result = result || isPositiveTermFound;
 			}
 		}
@@ -206,7 +181,7 @@ public class BooleanSearch {
 
 		if (operatorRegex.contains("AND")) {
 			for (String part : parts) {
-				if (!evaluateQuery(part.trim(), text)) {
+				if (!evaluateQuery(part.trim(), text, dataPosition)) {
 					return false; // If any part is false, the whole AND condition is false
 				}
 			}
@@ -214,7 +189,7 @@ public class BooleanSearch {
 		} else if (operatorRegex.contains("OR")) {
 			boolean result = false;
 			for (String part : parts) {
-				boolean evaluationResult = evaluateQuery(part.trim(), text);
+				boolean evaluationResult = evaluateQuery(part.trim(), text, dataPosition);
 				result = result || evaluationResult;
 			}
 			return result;
@@ -222,7 +197,7 @@ public class BooleanSearch {
 		return false;
 	}
 
-	private boolean evaluateBoostedTerms(String query, String text) {
+	private boolean evaluateBoostedTerms(String query, String text, int dataPosition) {
 		List<String> parts = new ArrayList<>();
 		List<String> unboostedTerms = new ArrayList<>();
 
@@ -239,7 +214,7 @@ public class BooleanSearch {
 //		}
 
 		if (query.contains(" NOT ")) {
-			return evaluateLogicalNot(query, text);
+			return evaluateLogicalNot(query, text, dataPosition);
 		}
 
 		// Regular expression to split by space or AND/&& outside of parentheses
@@ -275,14 +250,14 @@ public class BooleanSearch {
 
 				boolean allSubTermsMatch = true;
 				for (String subTerm : subTerms) {
-					if (!evaluateQuery(subTerm.trim(), text)) {
+					if (!evaluateQuery(subTerm.trim(), text, dataPosition)) {
 						allSubTermsMatch = false;
 						break;
 					}
 				}
 				isMatch = allSubTermsMatch;
 			} else {
-				isMatch = evaluateQuery(baseTerm, text);
+				isMatch = evaluateQuery(baseTerm, text, dataPosition);
 			}
 			if (isMatch) {
 				maxBoostScore = Math.max(maxBoostScore, boostScore);
@@ -291,7 +266,7 @@ public class BooleanSearch {
 
 		// Check if any unboosted term is present in text
 		for (String term : unboostedTerms) {
-			if (evaluateQuery(term, text)) {
+			if (evaluateQuery(term, text, dataPosition)) {
 				hasUnboostedMatch = true;
 				break;
 			}
@@ -300,12 +275,12 @@ public class BooleanSearch {
 		return hasUnboostedMatch || maxBoostScore > 0;
 	}
 
-	private boolean evaluateMandatoryTerms(String query, String text) {
+	private boolean evaluateMandatoryTerms(String query, String text, int dataPosition) {
 		String[] terms = query.split("\\s+");
 		for (String term : terms) {
 			if (term.startsWith("+")) {
-				if (!evaluateQuery(term.substring(1).trim(), text)) {
-					System.out.println(text);
+				if (!evaluateQuery(term.substring(1).trim(), text, dataPosition)) {
+					Reporter.log("Error in Data present at : " + (dataPosition), true);
 					Assert.fail("Mandatory term not found in the search result");
 					return false; // Mandatory term not found
 				}
@@ -358,7 +333,7 @@ public class BooleanSearch {
 		}
 
 		if (query.startsWith("+") && query.endsWith("~")) {
-			return evaluateMandatoryTerms(query, text);
+			return evaluateMandatoryTerms(query, text, dataPosition);
 		}
 
 		if ((query.startsWith("*") && query.endsWith("~")) || ((query.startsWith("?") && query.endsWith("~")))) {
@@ -494,201 +469,4 @@ public class BooleanSearch {
 		}
 		return dp[len1][len2];
 	}
-	
-	public String readFile(String fileUrl) throws CsvException, IOException {
-		Path tempFile = null;
-		String extractedText = "";
-
-		try {
-			// Create a temporary file (auto-deletes on exit)
-			tempFile = Files.createTempFile("downloaded_", ".tmp");
-
-			// Download the file from the URL
-			try (InputStream in = URI.create(fileUrl).toURL().openStream()) {
-				Files.copy(in, tempFile, StandardCopyOption.REPLACE_EXISTING);
-			}
-
-			// Use Tika to detect the MIME type of the file
-			Tika tika = new Tika();
-			String mimeType = tika.detect(tempFile.toFile());
-
-			if (mimeType != null) {
-				switch (mimeType) {
-				case "application/pdf":
-					extractedText = extractTextFromPDF(tempFile);
-//					System.out.println(extractedText);
-					break;
-				case "application/x-tika-msoffice":
-					extractedText = extractTextFromDOC(tempFile); // Only for .doc (OLE2 format)
-//					System.out.println(extractedText);
-					break;
-				case "application/x-tika-ooxml":
-					extractedText = extractTextFromDOCX(tempFile);
-//					System.out.println(extractedText);
-					break;
-				case "application/vnd.ms-excel":
-					extractedText = extractTextFromExcel(tempFile);
-					break;
-				case "application/zip":
-					extractedText = extractTextFromZIP(tempFile);
-					break;
-				case "text/csv":
-					extractedText = extractTextFromCSV(tempFile);
-					break;
-				default:
-					System.out.println("Unsupported file format: " + mimeType);
-					break;
-				}
-			} else {
-				System.out.println("Unable to determine MIME type for the file.");
-			}
-
-			// Delete the temp file after processing
-			Files.deleteIfExists(tempFile);
-
-		} catch (IOException e) {
-			System.out.println("❌ Error: " + e.getMessage());
-			throw e;
-		}
-		return extractedText;
-	}
-
-	private String extractTextFromPDF(Path tempFile) {
-		StringBuilder extractedText = new StringBuilder();
-		try (PDDocument document = PDDocument.load(tempFile.toFile())) {
-			PDFTextStripper pdfStripper = new PDFTextStripper();
-			String text = pdfStripper.getText(document);
-			extractedText.append(cleanText(text));
-		} catch (IOException e) {
-			System.out.println("❌ Error extracting PDF: " + e.getMessage());
-		}
-		return extractedText.toString();
-	}
-
-	private String extractTextFromZIP(Path tempFile) throws IOException {
-		StringBuilder extractedText = new StringBuilder();
-
-		try (ZipInputStream zis = new ZipInputStream(new FileInputStream(tempFile.toFile()))) {
-			ZipEntry entry;
-			while ((entry = zis.getNextEntry()) != null) {
-				if (!entry.isDirectory() && entry.getName().matches(".*\\.(txt|csv|json|xml|log)$")) {
-					// Process only text-based files
-					extractedText.append("\n--- ").append(entry.getName()).append(" ---\n");
-					extractedText.append(new String(zis.readAllBytes(), StandardCharsets.UTF_8)).append("\n");
-				}
-				zis.closeEntry();
-			}
-		} catch (IOException e) {
-			System.out.println("❌ Error extracting ZIP: " + e.getMessage());
-			throw e;
-		}
-
-		return cleanText(extractedText.toString());
-	}
-
-	private String extractTextFromExcel(Path tempFile) throws IOException {
-		StringBuilder extractedText = new StringBuilder();
-
-		try (FileInputStream fis = new FileInputStream(tempFile.toFile())) {
-			Workbook workbook = WorkbookFactory.create(fis);
-
-			for (Sheet sheet : workbook) {
-				extractedText.append("\n--- Sheet: ").append(sheet.getSheetName()).append(" ---\n");
-
-				for (Row row : sheet) {
-					List<String> cellTexts = new ArrayList<>();
-					for (Cell cell : row) {
-						cellTexts.add(cell.toString().trim()); // Get cell value as text
-					}
-					extractedText.append(String.join(" | ", cellTexts)).append("\n");
-				}
-			}
-		} catch (IOException e) {
-			System.out.println("❌ Error extracting Excel: " + e.getMessage());
-			throw e;
-		}
-
-		return cleanText(extractedText.toString());
-	}
-
-	private String extractTextFromDOCX(Path tempFile) throws IOException {
-		StringBuilder extractedText = new StringBuilder();
-		try (FileInputStream fis = new FileInputStream(tempFile.toFile()); XWPFDocument docx = new XWPFDocument(fis)) {
-
-			// Extract paragraphs
-			for (XWPFParagraph para : docx.getParagraphs()) {
-				extractedText.append(cleanText(para.getText())).append("\n");
-			}
-
-			// Extract tables
-			for (XWPFTable table : docx.getTables()) {
-				for (XWPFTableRow row : table.getRows()) {
-					String rowText = row.getTableCells().stream().map(cell -> cleanText(cell.getText()))
-							.filter(text -> !text.isEmpty()) // Remove empty fields
-							.collect(Collectors.joining(" | "));
-					if (!rowText.isEmpty()) {
-						extractedText.append(rowText).append("\n");
-					}
-				}
-			}
-
-		} catch (IOException e) {
-			System.out.println("❌ Error extracting DOCX: " + e.getMessage());
-			throw e;
-		}
-		return extractedText.toString();
-	}
-
-	private String extractTextFromDOC(Path tempFile) throws IOException {
-		StringBuilder extractedText = new StringBuilder();
-		try (FileInputStream fis = new FileInputStream(tempFile.toFile());
-				HWPFDocument doc = new HWPFDocument(fis);
-				WordExtractor extractor = new WordExtractor(doc)) {
-
-			extractedText.append(cleanText(String.join("\n", extractor.getParagraphText()))).append("\n");
-
-		} catch (IOException e) {
-			System.out.println("❌ Error extracting DOC: " + e.getMessage());
-			throw e;
-		}
-		return extractedText.toString();
-	}
-
-	private String extractTextFromCSV(Path tempFile) throws IOException {
-		StringBuilder extractedText = new StringBuilder();
-		try (Reader reader = Files.newBufferedReader(tempFile);
-				CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT)) {
-
-			for (CSVRecord record : csvParser) {
-				String rowText = record.stream().map(this::cleanText).filter(text -> !text.isEmpty()) // Remove empty
-																										// fields
-						.collect(Collectors.joining(" | "));
-				if (!rowText.isEmpty()) {
-					extractedText.append(rowText).append("\n");
-				}
-			}
-
-		} catch (IOException e) {
-			System.out.println("❌ Error extracting CSV: " + e.getMessage());
-			throw e;
-		}
-		return extractedText.toString();
-	}
-
-	private String cleanText(String text) {
-		if (text == null || text.trim().isEmpty())
-			return "";
-		// Normalize multiple spaces but keep valid line breaks
-		text = text.replaceAll("[ ]{2,}", " ");
-		// Remove completely empty lines
-		text = text.replaceAll("(?m)^[ \t]*\r?\n", "");
-		// Remove headers and footers (detect common patterns like page numbers, version
-		// info, etc.)
-		text = text.replaceAll("(?m)^.*(Page \\d+|v\\.\\d+ \\(\\w+ \\d{4}\\)).*$", "");
-		// Remove empty boxed text (lines with only tab characters or non-printable
-		// symbols)
-		text = text.replaceAll("(?m)^[\\t\\x07 ]+$", "");
-		return text.trim();
-	}
-
 }

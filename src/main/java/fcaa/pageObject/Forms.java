@@ -15,6 +15,7 @@ import org.testng.Reporter;
 import com.opencsv.exceptions.CsvException;
 
 import fcaa.AbstractComponnent.BooleanSearch;
+import fcaa.AbstractComponnent.FileExtractor;
 import fcaa.AbstractComponnent.MenuBar;
 
 public class Forms extends MenuBar {
@@ -195,21 +196,22 @@ public class Forms extends MenuBar {
 	private List<WebElement> formListItemsTitles;
 
 	BooleanSearch booleanSearch = new BooleanSearch();
+	FileExtractor fileExtractor = new FileExtractor();
 
 	// Validate search results
 	public boolean validateResults(String query) throws InterruptedException, CsvException, IOException {
 		boolean hasNextPage = true;
-		int actualDataPosition = 0;
+		int actualDataPosition = 1;
 
 		while (hasNextPage) {
 			for (int i = 0; i < formListItemsTitles.size(); i++) {
 				String url = formListItemsTitles.get(i).getAttribute("href");
-				String text = booleanSearch.readFile(url).toLowerCase();
+				String text = fileExtractor.readFile(url, actualDataPosition + i).toLowerCase();
 
 				// Match query against text
-				if (!booleanSearch.evaluateQuery(query, text)) {
+				if (!booleanSearch.evaluateQuery(query, text, actualDataPosition + i)) {
 					System.out.println(text);
-					Reporter.log("Error in Data present at : " + (actualDataPosition + (i + 1)), true);
+					Reporter.log("Error in Data present at : " + actualDataPosition + i, true);
 					return false; // Test fails if any result doesn't match
 				}
 			}

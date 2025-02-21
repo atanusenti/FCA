@@ -33,7 +33,7 @@ public class Glossary extends MenuBar {
 	@FindBy(xpath = "//button[text()=' Clear ']")
 	private WebElement searchClearBtn;
 
-	@FindBy(xpath = "//a[contains(@href,'/glossary/glossary-details')]")
+	@FindBy(xpath = "//a[contains(@class,'link_color')]")
 	private List<WebElement> glossaryTitles;
 
 	@FindBy(xpath = "//div[contains(@class,'details_wrap')]/div")
@@ -63,7 +63,7 @@ public class Glossary extends MenuBar {
 	public boolean validateResults(String query) throws InterruptedException {
 		if(!glossaryListData.isEmpty()) {
 			boolean hasNextPage = true;
-			int actualDataPosition = 0;
+			int actualDataPosition = 1;
 
 			while (hasNextPage) {
 				for (int i = 0; i < glossaryListData.size(); i++) {
@@ -72,9 +72,9 @@ public class Glossary extends MenuBar {
 					String updatedText = title.concat(" ").concat(content);
 
 					// Match query against text
-					if (!booleanSearch.evaluateQuery(query, updatedText)) {
+					if (!booleanSearch.evaluateQuery(query, updatedText, actualDataPosition + i)) {
 						System.out.println(updatedText);
-						Reporter.log("Error in Data present at : " + (actualDataPosition + (i + 1)), true);
+						Reporter.log("Error in Data present at : " + actualDataPosition + i, true);
 						return false; // Test fails if any result doesn't match
 					}
 				}
